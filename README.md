@@ -11,8 +11,11 @@
 
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
-| 190xxx | Nama 1 | 1 2 3 |
-| 190xxx | Nama 2 | 4 5 6 |
+| 1906399732 | Muhammad Raffy Suprajeni | 14, 15, 16, 17 |
+| 2006464341 | Shabrina Taqiyya | 6, 7, 8 |
+| 2006596541 | Caryn Hanuga | 1, 12, 13 |
+| 2006464745 | Shabrina Salsabila Kurniawan | 2, 3, 4, 5 |
+| 2006596900 | Magnolia Fayza Zulkary | 9, 10, 11 |
 ---
 **Kontrak Tahap x Tugas Akhir**
 
