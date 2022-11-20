@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>View Course</title>
+  <title>Rumah Sehat</title>
   <head th:fragment="css">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
   </head>
@@ -18,7 +18,7 @@
   </head>
 <body>
   <nav th:fragment="navbar(page)" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand font-weight-bold text-primary" href="#">BelajarBelajar</a>
+    <a class="navbar-brand font-weight-bold text-primary" href="#">Rumah Sehat</a>
     <button
             class="navbar-toggler"
             type="button"
@@ -35,17 +35,17 @@
         <li th:classappend="${page == 'Beranda'} ? active : ''" class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
         </li>
-        <li th:classappend="${page == 'Course'} ? active : ''"class="nav-item">
-          <a class="nav-link" href="/course/viewall">Course</a>
+        <li th:classappend="${page == 'Dokter'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
+          <a class="nav-link" href="/user/viewall-dokter">Dokter</a>
         </li>
-        <li th:classappend="${page == 'Penyelenggara'} ? active : ''"class="nav-item">
-          <a class="nav-link" href="/penyelenggara/viewall">Penyelenggara</a>
+        <li th:classappend="${page == 'Apoteker'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
+          <a class="nav-link" href="/user/viewall-apoteker">Apoteker</a>
         </li>
-        <li th:classappend="${page == 'Pengguna'} ? active : ''"class="nav-item"  sec:authorize="hasAuthority('Admin')">
-          <a class="nav-link" href="/user/viewall">Pengguna</a>
+        <li th:classappend="${page == 'Pengguna'} ? active : ''"class="nav-item" >
+          <a class="nav-link" href="/">NavbarDummy</a>
         </li>
         <li th:classappend="${page == 'Update Password'} ? active : ''"class="nav-item">
-          <a class="nav-link" href="/user/update">Update Password</a>
+          <a class="nav-link" href="/">NavbarDummy</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" th:action="@{/course/view}" method="GET">
