@@ -28,12 +28,16 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+
+
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="apoteker")
+// @DiscriminatorValue("3")
 public class ApotekerModel extends UserModel implements Serializable{
     
     @OneToMany(mappedBy = "confirmerUuid", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
