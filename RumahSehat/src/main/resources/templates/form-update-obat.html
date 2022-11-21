@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+  <title>Rumah Sehat</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Obat')"></nav>
+<div class="container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2>Update Obat</h2>
+        <br>
+        <form th:action="@{/user/updateObat/idObat}" th:object="${obat}" method="POST">
+          <input type="hidden" th:field="*{idObat}" />
+          <input type="hidden" th:field="*{harga}" />
+          <input type="hidden" th:field="*{namaObat}" />
+          <input type="hidden" name="username" th:value="${#httpServletRequest.remoteUser}">
+          <label>Stok Lama</label>
+          <input class="form-control" type="number" th:value="*{stok}" disabled/>
+
+          <label>Stok baru</label>
+          <input class="form-control" type="number" name="stok"/>
+          <br>
+          <br>
+
+          <button class="btn btn-primary" type="submit">Simpan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<body>
+
+</body>
+</html>
