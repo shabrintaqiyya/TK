@@ -2,6 +2,12 @@
 <html lang="en" xmlns:th="http://thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
+<style>
+  .hide-animate{
+    transition: 3s;
+    opacity: 0;
+  }
+</style>
 <head>
   <title>Rumah Sehat</title>
   <object th:include="fragments/fragment :: css" th:remove="tag"></object>
@@ -10,6 +16,10 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar('Obat')"></nav>
 <div class="container">
+  <!--  Flash message-->
+  <div class="alert alert-primary" id="success-flash" role="alert" th:text="${success}" th:if="${success}"></div>
+  <div class="alert alert-danger" id="error-flash" role="alert" th:text="${error}" th:if="${error}"></div>
+
   <div class="card m-4 p-4">
     <div class="card-body">
       <div class="justify-content-center">
@@ -28,7 +38,7 @@
               <th>Nama Obat</th>
               <th>Stok</th>
               <th>Harga</th>
-              <!-- <th style="text-align: center">Aksi</th> -->
+              <th style="text-align: center">Aksi</th>
             </tr>
             </thead>
             <tbody>
@@ -38,9 +48,9 @@
               <td th:text="${obat.namaObat}"></td>
               <td th:text="${obat.stok}"></td>
               <td th:text="${obat.harga}"></td>
-              <!-- <td>
-                  <a class="btn btn-sm btn-danger" th:href="@{/user/delete/} + ${user.username}">Delete</a>
-              </td> -->
+              <td>
+                  <a class="btn btn-sm btn-danger" th:href="@{/user/update/} + ${obat.idObat}">Update</a>
+              </td>
             </tr>
             </tbody>
           </table>
@@ -53,4 +63,20 @@
 </div>
 
 </body>
+
+<script type="text/javascript">
+  function setNone(flashEl){
+    flashEl.style.display = 'none';
+  }
+
+  setTimeout(() => {
+    let flashEl = document.getElementById('success-flash')
+    if (flashEl === null){
+      flashEl = document.getElementById('error-flash')
+    }
+    flashEl.classList.add('hide-animate');
+    setNone(flashEl);
+  }, 3000)
+
+</script>
 </html>

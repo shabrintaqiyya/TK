@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import apap.tugas.akhir.RumahSehat.model.ObatModel;
 
+import java.util.Optional;
+
 @Repository
 public interface ObatDb extends JpaRepository<ObatModel, String>{
-    ObatModel findByIdObat(String idObat);
+    Optional<ObatModel> findByIdObat(String idObat);
 }
