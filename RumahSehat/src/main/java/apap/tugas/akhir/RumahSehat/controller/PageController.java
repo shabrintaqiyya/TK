@@ -45,7 +45,7 @@ public class PageController {
 
     private ArrayList<String> whiteList = new ArrayList<>(
         Arrays.asList(
-            "shabrina.salsabila01",
+            // "shabrina.salsabila01",
             "magnolia.fayza01",
             "muhammad.raffy",
             "caryn.hanuga",
@@ -75,7 +75,7 @@ public class PageController {
         HttpServletRequest request
     ){
 
-        
+        System.out.println("INI DALAM VALIDATEEE");
         ServiceResponse serviceResponse = this.webClient.get().uri(
                 String.format(
                         Setting.SERVER_VALIDATE_TICKET,
@@ -91,48 +91,61 @@ public class PageController {
         
         AdminModel admin = adminService.getUserByUsername(username);
         
-        // System.out.println(admin.getNama());
+        // System.out.println(whiteList.contains(username));
         
+        // if(whiteList.contains(username)){
 
-        if (admin == null && whiteList.contains(username)) {
-            admin = new AdminModel();
-            admin.setEmail(username + "@ui.ac.id");
-            admin.setNama(attributes.getNama());
-            admin.setPassword("rumahsehat");
-            admin.setUsername(username);
-            admin.setIsSso(true);
-            admin.setRole("Admin");
-            adminService.addAdmin(admin);
+            if (admin == null) {
+                // if(whiteList.contains(username)){
+                    admin = new AdminModel();
+                    admin.setEmail(username + "@ui.ac.id");
+                    admin.setNama(attributes.getNama());
+                    admin.setPassword("rumahsehat");
+                    admin.setUsername(username);
+                    admin.setIsSso(true);
+                    admin.setRole("Admin");
+                    adminService.addAdmin(admin);
+                // }
+    
+                // user = new UserModel();
+                // user.setEmail(username + "@ui.ac.id");
+                // user.setNama(attributes.getNama());
+                // user.setPassword("belajarbelajar");
+                // user.setUsername(username);
+                // user.setIsSso(true);
+                // user.setRole(roleService.getById(Long.valueOf(0)));
+                // userService.addUser(user);
+                // else{
+                //     return new ModelAndView("login");
+                // }
+            }
+    
+            // if(whiteList.contains(username)){
+            // else{
+            //     return new ModelAndView("login");
+            // }
+            Authentication authentication = new UsernamePasswordAuthenticationToken(username, "rumahsehat");
+            
+            // System.out.println("TTTTTTTTTTTT "+ authentication);
+            
+            SecurityContext securityContext = SecurityContextHolder.getContext();
+            securityContext.setAuthentication(authentication);
+    
+            HttpSession httpSession = request.getSession(true);
+            httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+            
+            return new ModelAndView("redirect:/");
+        // }
+        // }
 
-            // user = new UserModel();
-            // user.setEmail(username + "@ui.ac.id");
-            // user.setNama(attributes.getNama());
-            // user.setPassword("belajarbelajar");
-            // user.setUsername(username);
-            // user.setIsSso(true);
-            // user.setRole(roleService.getById(Long.valueOf(0)));
-            // userService.addUser(user);
-        }
-        else{
-            return new ModelAndView("login");
-        }
-
-        Authentication authentication = new UsernamePasswordAuthenticationToken(username, "rumahsehat");
-        
-        // System.out.println("TTTTTTTTTTTT "+ authentication);
-        
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        HttpSession httpSession = request.getSession(true);
-        httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
-        
-        return new ModelAndView("redirect:/");
+        // return new ModelAndView("login");
     }
 
     @GetMapping(value = "login-sso")
     public ModelAndView loginSSO() {
-        System.out.println(Setting.SERVER_LOGIN + Setting.CLIENT_LOGIN);
+        System.out.println("printttttttttt"+ Setting.SERVER_LOGIN + Setting.CLIENT_LOGIN);
+        
+        
         return new ModelAndView("redirect:" + Setting.SERVER_LOGIN + Setting.CLIENT_LOGIN);
     }
 
