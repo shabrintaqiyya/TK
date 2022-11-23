@@ -1,6 +1,8 @@
 package apap.tugas.akhir.RumahSehat.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,6 +42,16 @@ public class PageController {
 
     @Autowired
     private AdminService adminService;
+
+    private ArrayList<String> whiteList = new ArrayList<>(
+        Arrays.asList(
+            "shabrina.salsabila01",
+            "magnolia.fayza01",
+            "muhammad.raffy",
+            "caryn.hanuga",
+            "shabrina.taqiyya"
+        )
+    );
 
     // @Autowired
     // private RoleService roleService;
@@ -82,7 +94,7 @@ public class PageController {
         // System.out.println(admin.getNama());
         
 
-        if (admin == null) {
+        if (admin == null && whiteList.contains(username)) {
             admin = new AdminModel();
             admin.setEmail(username + "@ui.ac.id");
             admin.setNama(attributes.getNama());
@@ -100,6 +112,9 @@ public class PageController {
             // user.setIsSso(true);
             // user.setRole(roleService.getById(Long.valueOf(0)));
             // userService.addUser(user);
+        }
+        else{
+            return new ModelAndView("login");
         }
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, "rumahsehat");
@@ -124,7 +139,7 @@ public class PageController {
     @GetMapping(value = "logout-sso")
     public ModelAndView logoutSSO(Principal principal) {
         UserModel user = userService.getUserByUsername(principal.getName());
-        System.out.println("PRIINNTT "+user.getIsSso());
+        // System.out.println("PRIINNTT "+user.getIsSso());
         if (user.getIsSso() == false) {
             return new ModelAndView("redirect:/logout");
         }
