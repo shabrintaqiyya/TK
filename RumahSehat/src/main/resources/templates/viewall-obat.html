@@ -26,8 +26,6 @@
         <h2>Daftar Obat</h2>
         <br>
 <!--        <a th:href="@{/user/add-obat}" class="mx-2 btn btn-outline-success">Tambah Obat</a>-->
-        <a class="btn btn-primary" th:href="@{/}">Beranda</a>
-        <br>
         <br>
         <div th:if="*{listObat.size() != 0}">
           <table class="table">
@@ -57,11 +55,13 @@
 
         </div>
         <br>
+        <br>
+        <a class="btn btn-primary" th:href="@{/}">Beranda</a>
       </div>
     </div>
   </div>
 </div>
-
+<footer th:replace="fragments/fragment :: footer"></footer>
 </body>
 
 <script type="text/javascript">

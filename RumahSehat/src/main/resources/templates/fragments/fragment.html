@@ -35,28 +35,52 @@
         <li th:classappend="${page == 'Beranda'} ? active : ''" class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
         </li>
-        <li th:classappend="${page == 'Dokter'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
-          <a class="nav-link" href="/user/viewall-dokter">Dokter</a>
+        <li th:classappend="${page == 'Dokter'} ? active : ''"class="nav-item" sec:authorize="hasAnyAuthority('Admin', 'Dokter')">
+          <a class="nav-link" href="/user/viewall-appointment">Appointment</a>
         </li>
-        <li th:classappend="${page == 'Apoteker'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
-          <a class="nav-link" href="/user/viewall-apoteker">Apoteker</a>
+        <li th:classappend="${page == 'Obat'} ? active : ''"class="nav-item" sec:authorize="hasAnyAuthority('Admin', 'Apoteker')">
+          <a class="nav-link" href="/user/viewall-obat">Obat</a>
         </li>
-        <li th:classappend="${page == 'Appointment'} ? active : ''"class="nav-item" >
-          <a class="nav-link" href="/appointment">Appointment</a>
+        <li th:classappend="${page == 'LihatResep'} ? active : ''"class="nav-item" sec:authorize="hasAnyAuthority('Admin', 'Dokter')">
+          <a class="nav-link" href="/user/viewall-resep">Lihat Resep</a>
         </li>
-        <li th:classappend="${page == 'Update Password'} ? active : ''"class="nav-item">
-          <a class="nav-link" href="/">NavbarDummy</a>
+        <li th:classappend="${page == 'BuatResep'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Dokter')">
+          <a class="nav-link" href="/user/tambah-resep">Buat Resep</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" th:action="@{/course/view}" method="GET">
-        <input class="form-control mr-sm-2" type="search"
-               name="code" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+<!--      <form class="form-inline my-2 my-lg-0" th:action="@{/course/view}" method="GET">-->
+<!--        <input class="form-control mr-sm-2" type="search"-->
+<!--               name="code" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>-->
+<!--      </form>-->
       <ul class="navbar-nav pull-right">
         <a class="nav-item nav-link text-text-secondary" th:href="@{/logout-sso}">Logout</a>
       </ul>
     </div>
   </nav>
+
+  <!-- Footer -->
+  <footer th:fragment="footer" class="text-center text-white" style="background-color: #0a4275;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: CTA -->
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3">Made with love, sweat, tears, and hard work <3</span>
+        </p>
+      </section>
+      <!-- Section: CTA -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="https://www.youtube.com/watch?v=SWpOCLP1hjw">ADM_Kelompok 84</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+  </section>
 </body>
 </html>
