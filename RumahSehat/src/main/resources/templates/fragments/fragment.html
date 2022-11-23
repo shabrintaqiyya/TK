@@ -41,8 +41,8 @@
         <li th:classappend="${page == 'Apoteker'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
           <a class="nav-link" href="/user/viewall-apoteker">Apoteker</a>
         </li>
-        <li th:classappend="${page == 'Pengguna'} ? active : ''"class="nav-item" >
-          <a class="nav-link" href="/">NavbarDummy</a>
+        <li th:classappend="${page == 'Appointment'} ? active : ''"class="nav-item" >
+          <a class="nav-link" href="/appointment">Appointment</a>
         </li>
         <li th:classappend="${page == 'Update Password'} ? active : ''"class="nav-item">
           <a class="nav-link" href="/">NavbarDummy</a>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Beranda</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Appointment')"></nav>
+  <div class="d-flex justify-content-center">
+    <div class="m-4">
+        <h2>Informasi Appointment</h2>
+        <br>
+        <div class="col">
+            <a th:href="@{/}" class="btn btn-primary">Beranda</a>
+        </div>
+        <br><br>
+        
+    </div>
+  </div>
+</body>
+</html>
