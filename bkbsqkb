@@ -1,0 +1,167 @@
+[33mcommit c5352edb19769162a0d202fd8f4d2dcdfec96177[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Wed Nov 23 18:19:22 2022 +0700
+
+    perbaikan login
+
+[33mcommit b16f9417381ab943e8b5bcf2830cdacc849e62bf[m
+Merge: 49a9559 c1063a5
+Author: Shabrina Salsabila Kurniawan <shabrina.salsabila01@ui.ac.id>
+Date:   Wed Nov 23 17:05:16 2022 +0700
+
+    Merge branch 'feat/login-logout' into 'main'
+    
+    feat(login-logout): rumah sehat
+    
+    See merge request shabrina.taqiyya/ta_c_adm_84!7
+
+[33mcommit c1063a56ff7bdba992c89846b2605e11d60b9f55[m
+Author: Shabrina Salsabila Kurniawan <shabrina.salsabila01@ui.ac.id>
+Date:   Wed Nov 23 17:05:16 2022 +0700
+
+    feat(login-logout): rumah sehat
+
+[33mcommit 49a9559b9356c4ab204d2a93343f667e09978e8e[m
+Merge: 430a768 f5a1f12
+Author: Shabrina Taqiyya <shabrina.taqiyya@ui.ac.id>
+Date:   Wed Nov 23 16:51:35 2022 +0700
+
+    Merge branch 'feat/melihatJadwalAppointment' into 'main'
+    
+    Feat/melihat jadwal appointment
+    
+    See merge request shabrina.taqiyya/ta_c_adm_84!5
+
+[33mcommit f5a1f1272996eb6911c3ed046d48750b781aaa77[m
+Author: Shabrina Taqiyya <shabrina.taqiyya@ui.ac.id>
+Date:   Wed Nov 23 16:51:35 2022 +0700
+
+    Feat/melihat jadwal appointment
+
+[33mcommit 430a768e4b2d122d4affe454d3eace08c37ee38f[m
+Merge: ad58cf5 5fca8d2
+Author: Caryn Hanuga <caryn.hanuga@ui.ac.id>
+Date:   Tue Nov 22 00:12:33 2022 +0700
+
+    Merge branch 'feat/mengubahStokObat' into 'main'
+    
+    feat(fitur13): mengubah stok obat
+    
+    See merge request shabrina.taqiyya/ta_c_adm_84!4
+
+[33mcommit 5fca8d265eba65f4c7ed58b805e7c34d0fb8e4b6[m
+Author: Caryn Hanuga <caryn.hanuga@ui.ac.id>
+Date:   Tue Nov 22 00:12:33 2022 +0700
+
+    feat(fitur13): mengubah stok obat
+
+[33mcommit ad58cf5570a5d4ad09b802fdead278b97d60f178[m
+Merge: 993a094 5bd5269
+Author: Caryn Hanuga <caryn.hanuga@ui.ac.id>
+Date:   Mon Nov 21 22:04:18 2022 +0700
+
+    Merge branch 'feat/melihatDaftarObat' into 'main'
+    
+    feat(fitur12): melihat daftar obat
+    
+    See merge request shabrina.taqiyya/ta_c_adm_84!3
+
+[33mcommit 5bd52698d29d783e774e90b4da9d0360e730e923[m
+Author: Caryn Hanuga <caryn.hanuga@ui.ac.id>
+Date:   Mon Nov 21 22:04:18 2022 +0700
+
+    feat(fitur12): melihat daftar obat
+
+[33mcommit 993a094151582a88c830c013e42c352768062bd5[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Sun Nov 20 12:06:39 2022 +0700
+
+    feat: login logout html
+
+[33mcommit 768711d9a053864e972e0213fe801aa78a4b4181[m
+Merge: d7777df 32f3747
+Author: Shabrina Salsabila Kurniawan <shabrina.salsabila01@ui.ac.id>
+Date:   Sun Nov 20 11:35:38 2022 +0700
+
+    Merge branch 'feat/login-logout' into 'main'
+    
+    feat(login-logout): RumahSehat
+    
+    See merge request shabrina.taqiyya/ta_c_adm_84!2
+
+[33mcommit 32f3747472f2a7903cce6358034b4b857e254d91[m
+Author: Shabrina Salsabila Kurniawan <shabrina.salsabila01@ui.ac.id>
+Date:   Sun Nov 20 11:35:38 2022 +0700
+
+    feat(login-logout): RumahSehat
+
+[33mcommit d7777df87c43862aff3aeaf5f525a46f58ef5533[m
+Merge: d68aa0b 985705b
+Author: Shabrina Salsabila Kurniawan <shabrina.salsabila01@ui.ac.id>
+Date:   Tue Nov 15 21:47:45 2022 +0700
+
+    Merge branch 'feat/login-logout' into 'main'
+    
+    membuat model
+    
+    See merge request shabrina.taqiyya/ta_c_adm_84!1
+
+[33mcommit 985705b0f1f824037d7f30d4c6f236dc9ae1c82a[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Tue Nov 15 21:42:06 2022 +0700
+
+    membuat model
+
+[33mcommit d68aa0b0e1ba04c36af8c22d6c015de8d40809d9[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Tue Nov 15 18:28:13 2022 +0700
+
+    menambah html
+
+[33mcommit 3b4b856f53f70b9d9dc7d73b684b07679c5ba151[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Tue Nov 15 18:11:22 2022 +0700
+
+    menambahkan dependencies
+
+[33mcommit 30bf86feec230cfe914766f18a196e593cbd250f[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Tue Nov 15 11:26:30 2022 +0700
+
+    menambahkan folder dan file
+
+[33mcommit 9245edb138908a13208ccd34f6b0d89a3c54ebea[m
+Author: shabrina salsabila kurniawan <shabrinasalsabila15@gmail.com>
+Date:   Sun Nov 13 13:23:54 2022 +0700
+
+    feat: add RumahSehat initialize spring boot
+
+[33mcommit eb4f19a9e1cce4b1d65e088a8f29f03c5a3b0d26[m
+Author: Shabrina Salsabila Kurniawan <shabrina.salsabila01@ui.ac.id>
+Date:   Fri Nov 11 23:12:14 2022 +0700
+
+    Update README.md
+
+[33mcommit 7708213fdf60d8f335117e9f136bfb39ff5a61da[m
+Author: Shabrina Taqiyya <shabrina.taqiyya@ui.ac.id>
+Date:   Fri Nov 11 22:42:37 2022 +0700
+
+    Update README.md
+
+[33mcommit c81d4fa75e59a6bdb00dad7ca7658579101a0477[m
+Author: Shabrina Taqiyya <shabrina.taqiyya@ui.ac.id>
+Date:   Thu Nov 10 19:04:10 2022 +0700
+
+    Update README.md
+
+[33mcommit f09ff003b5984ee9c6df3ada7cad9d90334e10e6[m
+Author: Shabrina Taqiyya <shabrina.taqiyya@ui.ac.id>
+Date:   Tue Nov 8 22:32:21 2022 +0700
+
+    Update README.md
+
+[33mcommit 83354330fef6742248be4164e87766f4cb502e4f[m
+Author: Shabrina Taqiyya <shabrina.taqiyya@ui.ac.id>
+Date:   Tue Nov 8 22:21:07 2022 +0700
+
+    Initial commit
