@@ -33,11 +33,19 @@ public class AppointmentController {
     @Autowired
     private DokterService dokterService;
 
-    @GetMapping("/appointment/{username}")
-    public String jadwalAppointmentAdmin(@PathVariable String username, Model model) {
+    @RequestMapping("/appointment/{username}")
+    public String jadwalAppointmentAdmin(
+        @PathVariable(value = "username") String username, 
+        Model model
+    ) {
+        System.out.println("MULAII");
         UserModel user = userService.getUserByUsername(username);
+        System.out.println("11111111");
+        System.out.println(user.getUsername());
         if (user.getRole().equals("Dokter")) {
             DokterModel dokter = dokterService.getDokterByUsername(username);
+            System.out.println("dokter");
+            System.out.println("aaaaaa: "+dokter.getUsername());
             List<AppointmentModel> listAppointmentDokter = dokter.getListAppointment();
             model.addAttribute("listAppointmentDokter", listAppointmentDokter);
             return "viewall-appointment-dokter";
