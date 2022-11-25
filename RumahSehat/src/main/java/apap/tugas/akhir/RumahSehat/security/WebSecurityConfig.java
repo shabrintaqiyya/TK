@@ -26,6 +26,7 @@ public class WebSecurityConfig {
                 .antMatchers("/user/viewall-apoteker").hasAnyAuthority("Admin") 
                 .antMatchers("/user/add-dokter").hasAnyAuthority("Admin") 
                 .antMatchers("/user/add-apoteker").hasAnyAuthority("Admin") 
+                .antMatchers("/user/appointment").hasAnyAuthority("Admin", "Dokter", "Pasien") 
                 // .antMatchers("/penyelenggara/add").hasAnyAuthority("Manajer")
                 .anyRequest().authenticated()
                 .and()
