@@ -3,8 +3,8 @@ package apap.tugas.akhir.RumahSehat.controller;
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
-import apap.tugas.akhir.RumahSehat.model.ResepModel;
 import apap.tugas.akhir.RumahSehat.model.TagihanModel;
+import apap.tugas.akhir.RumahSehat.model.UserModel;
 import apap.tugas.akhir.RumahSehat.service.*;
 
 import java.util.List;
@@ -25,14 +25,26 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping("/appointment")
-    public String jadwalAppointment(Model model) {
+    @Qualifier("userServiceImpl")
+    @Autowired
+    private UserService userService;
+
+    @Qualifier("dokterServiceImpl")
+    @Autowired
+    private DokterService dokterService;
+
+    @GetMapping("/appointment/{username}")
+    public String jadwalAppointmentAdmin(@PathVariable String username, Model model) {
+        UserModel user = userService.getUserByUsername(username);
+        if (user.getRole().equals("Dokter")) {
+            DokterModel dokter = dokterService.getDokterByUsername(username);
+            List<AppointmentModel> listAppointmentDokter = dokter.getListAppointment();
+            model.addAttribute("listAppointmentDokter", listAppointmentDokter);
+            return "viewall-appointment-dokter";
+        }
         List<AppointmentModel> listAppointment = appointmentService.getListAppointment();
-        // List<AppointmentModel> listAppointmentDokter = ;
-        // model.addAttribute("jadwalAppointment", jadwalAppointment);
         model.addAttribute("listAppointment", listAppointment);
-        
-        return "viewall-appointment";
+        return "viewall-appointment-admin";
     }
 
     @GetMapping("/appointment/{kode}")
