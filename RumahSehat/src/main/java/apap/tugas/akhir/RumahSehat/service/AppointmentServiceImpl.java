@@ -37,6 +37,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
     @Override
     public AppointmentModel setDoneAppointment(AppointmentModel appointment) {
+        appointment.setIsDone(true);
         appointmentDb.save(appointment);        
         return appointment;
     }
