@@ -24,7 +24,7 @@
 | 1906399732 | Muhammad Raffy Suprajeni | 14, 15 |
 | 2006464341 | Shabrina Taqiyya | 7, 8 |
 | 2006596541 | Caryn Hanuga | 12, 13 |
-| 2006464745 | Shabrina Salsabila Kurniawan | 2, 3 |
+| 2006464745 | Shabrina Salsabila Kurniawan | 2, 3, 4 |
 | 2006596900 | Magnolia Fayza Zulkary | 9, 10 |
 ---
 **Kontrak Tahap 3 Tugas Akhir**
@@ -32,8 +32,8 @@
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
 | 1906399732 | Muhammad Raffy Suprajeni | 16, 17, 18, 19, 20 |
-| 2006464341 | Shabrina Taqiyya | 6, 18, 18, 19, 20 |
+| 2006464341 | Shabrina Taqiyya | 6, 18, 19, 20 |
 | 2006596541 | Caryn Hanuga | 12, 18, 19, 20 |
-| 2006464745 | Shabrina Salsabila Kurniawan | 4, 5, 18, 19, 20 |
+| 2006464745 | Shabrina Salsabila Kurniawan | 5, 18, 19, 20 |
 | 2006596900 | Magnolia Fayza Zulkary | 11, 18, 19, 20 |
 ---
