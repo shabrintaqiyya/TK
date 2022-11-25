@@ -40,7 +40,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                         <td th:if="${appointment.isDone}">Sudah Selesai</td>
                         <td th:unless="${appointment.isDone}">Belum Selesai</td>
                         <td>
-                            <a class="btn btn-primary" th:href="@{/user/appointment/} + ${appointment.kode}">Detail</a>
+                            <a class="btn btn-primary" th:href="@{/user/appointment/view/} + ${appointment.kode}">Detail</a>
                         </td>
                     </tr>
                 </tbody>

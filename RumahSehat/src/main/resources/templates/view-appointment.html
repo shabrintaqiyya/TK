@@ -63,7 +63,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <!-- <a th:if="${counter==0}" class="btn btn-primary" th:href="@{/user/appointment/done/} + ${appointment.kode}">Selesai</a>                             -->
             </div>
             <div class="w-50" sec:authorize="hasAuthority('Dokter')">
-              <a th:href="@{/user/resep/add}" class="btn btn-primary">Create Resep</a>
+              <a th:href="@{/user/resep/add/} + ${appointment.kode}" class="btn btn-primary">Create Resep</a>
             </div>
           </div>
           <!-- Modal Konfirmasi Selesai Tanpa Resep -->

@@ -55,7 +55,7 @@ public class AppointmentController {
         return "viewall-appointment-admin";
     }
 
-    @GetMapping("/appointment/{kode}")
+    @GetMapping("/appointment/view/{kode}")
     public String viewDetailAppointmentPage(@PathVariable String kode, Model model) {
         AppointmentModel appointment = appointmentService.getAppointmentByKode(kode);
         
