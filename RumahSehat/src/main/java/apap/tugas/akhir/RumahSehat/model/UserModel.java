@@ -39,16 +39,16 @@ public class UserModel implements Serializable {
     @Column(name = "nama", nullable = false)
     private String nama;
     
-    // @NotNull
-    // @Size(max = 50)
-    // @Column(name = "role", nullable = false)
-    // private String role;
+    @NotNull
+    @Size(max = 50)
+    @Column(name = "role", nullable = false)
+    private String role;
 
     // @ManyToOne(fetch = FetchType.EAGER)
     // @JoinColumn(name = "id_role", referencedColumnName = "id", nullable = false)
     // @OnDelete(action = OnDeleteAction.CASCADE)
     // @JsonIgnore
-    private String role;
+    // private String role;
 
     @NotNull
     @Size(max = 50)
