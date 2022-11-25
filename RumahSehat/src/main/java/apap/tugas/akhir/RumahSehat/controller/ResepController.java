@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import apap.tugas.akhir.RumahSehat.model.JumlahModel;
@@ -23,6 +24,7 @@ import apap.tugas.akhir.RumahSehat.service.ObatService;
 import apap.tugas.akhir.RumahSehat.service.ResepService;
 
 @Controller
+@RequestMapping("/user")
 public class ResepController {
     @Qualifier("resepServiceImpl")
     @Autowired

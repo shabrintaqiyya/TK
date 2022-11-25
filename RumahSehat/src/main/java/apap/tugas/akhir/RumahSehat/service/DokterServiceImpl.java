@@ -32,4 +32,10 @@ public class DokterServiceImpl implements DokterService{
         dokter.setPassword(pass);
         return dokterDb.save(dokter);
     }
+
+    @Override 
+    public DokterModel getDokterByUsername(String Username) {
+        DokterModel dokter = dokterDb.findByUsername(Username);
+        return dokter;
+    }
 }

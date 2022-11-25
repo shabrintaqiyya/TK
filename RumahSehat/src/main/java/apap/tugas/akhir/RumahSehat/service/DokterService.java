@@ -11,6 +11,7 @@ public interface DokterService {
     List<DokterModel> getListDokter();
     DokterModel addDokter(DokterModel dokter);
     public String encrypt(String password);
+    public DokterModel getDokterByUsername(String Username);
     // void deleteUser(UserModel user);
     // boolean updatePassword(UserModel username, String oldPass, String newPass, String confirmPass);
 }

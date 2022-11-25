@@ -81,13 +81,13 @@
         <br>
 
         <div class="d-flex justify-content-center" sec:authorize="hasAnyAuthority('Admin', 'Dokter')">
-            <a th:href="@{/user/appointment}" class="mx-2 btn btn-secondary btn-block">Lihat Jadwal Appointment</a>
+            <a th:href="@{/user/appointment/} + ${#httpServletRequest.remoteUser}" class="mx-2 btn btn-secondary btn-block">Lihat Jadwal Appointment</a>
         </div>
 
         <br>
 
         <div class="d-flex justify-content-center" sec:authorize="hasAnyAuthority('Admin', 'Apoteker')">
-            <a th:href="@{/user/viewall-resep}" class="mx-2 btn btn-secondary btn-block">Lihat Resep</a>
+            <a th:href="@{/user/resep/viewall}" class="mx-2 btn btn-secondary btn-block">Lihat Resep</a>
         </div>
 
         <br>

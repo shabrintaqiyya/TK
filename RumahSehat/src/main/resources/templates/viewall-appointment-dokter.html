@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Beranda</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Appointment')"></nav>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <div class="d-flex justify-content-center">
+    <div class="m-4">
+        <h2>Daftar Appointment</h2>
+        <br>
+        <div class="col">
+            <a th:href="@{/}" class="btn btn-primary">Beranda</a>
+        </div>
+        <br><br>
+        <div th:if="*{listAppointmentDokter.size() != 0}">
+            <table class="table" sec:authorize="hasAuthority('Dokter')">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Dokter</th>
+                        <th>Nama Pasien</th>
+                        <th>Waktu Awal Appointment</th>
+                        <th>Status Appointment</th>
+                        <th colspan="1" styles="text-align:center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="appointment, iterationStatus : ${listAppointmentDokter}"
+                    th:style="${iterationStatus.even} ? 'font-weight:bold;'">
+                        <td th:text=${iterationStatus.count}></td>
+                        <td th:text="${appointment.dokter.nama}"></td>
+                        <td th:text="${appointment.pasien.nama}"></td>
+                        <td th:text="${#temporals.format(appointment.waktuAwal, 'dd-MM-yyyy HH:mm')}"></td>
+                        <td th:if="${appointment.isDone}">Sudah Selesai</td>
+                        <td th:unless="${appointment.isDone}">Belum Selesai</td>
+                        <td>
+                            <a class="btn btn-primary" th:href="@{/user/appointment/} + ${appointment.kode}">Detail</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:unless="*{listAppointmentDokter.size() != 0}">
+            <div class="card">
+                <div class="card-body">
+                    Tidak ada Jadwal Appointment
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
