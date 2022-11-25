@@ -54,13 +54,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
           <div class="mb-2 d-flex">
             <div class="w-50">
                 <!-- Button trigger modal konfirmasi selesai appointment tanpa resep-->
-                <button th:if="${appointment.listResep.size() == 0}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#tanpaResepConfirm">
-                  Selesai
+                <button th:if="${resep == null}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#tanpaResepConfirm">
+                  Selesai 
                 </button>  
-                <button th:if="${counter > 0}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#cannotSelesai">
+                <button th:unless="${resep == null}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#cannotSelesai">
                   Selesai
-                </button>  
-                <a th:if="${counter==0}" class="btn btn-primary" th:href="@{/user/appointment/done/} + ${appointment.kode}">Selesai</a>                            
+                </button>
+                <!-- <a th:if="${counter==0}" class="btn btn-primary" th:href="@{/user/appointment/done/} + ${appointment.kode}">Selesai</a>                             -->
             </div>
             <div class="w-50" sec:authorize="hasAuthority('Dokter')">
               <a th:href="@{/user/resep/add}" class="btn btn-primary">Create Resep</a>

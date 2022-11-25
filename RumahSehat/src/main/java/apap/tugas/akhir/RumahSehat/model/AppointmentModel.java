@@ -51,7 +51,7 @@ public class AppointmentModel implements Serializable {
     private DokterModel dokter;
 
     @OneToOne(mappedBy = "kodeAppointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    ResepModel listResep;
+    ResepModel resep;
 
     @OneToOne(mappedBy = "kodeAppointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private TagihanModel tagihan;

@@ -38,38 +38,27 @@ public class AppointmentController {
     @GetMapping("/appointment/{kode}")
     public String viewDetailAppointmentPage(@PathVariable String kode, Model model) {
         AppointmentModel appointment = appointmentService.getAppointmentByKode(kode);
-        // Counter jumlah resep yg belum selesai
-        int counter = 0;
-        for (ResepModel resep : appointment.getListResep()) {
-            if (!resep.getIsDone()) {
-                counter++;
-            }
-        }
-        // System.out.printn("masukkk");
-        // System.out.printlln(counter);
-        // Artinya ada resep yg blm selesai shg gabisa selesaiin appointment
-        // if (counter > 0) {
-        // model.addAttribute("counter", counter);
-        // }
-        // Yg belum itu yg ada resepnya, tp udh selesai semua
-        // tombol selesainya gk muncul
+        
         if (!appointment.getIsDone()) {
             model.addAttribute("appointment", appointment);
             return "view-appointment";
         }
         model.addAttribute("appointment", appointment);
-        model.addAttribute("counter", counter);
+        model.addAttribute("resep", appointment.getResep());
+        model.addAttribute("resepDone", appointment.getResep().getIsDone());
         return "view-appointment-done";
     }
 
     @GetMapping("/appointment/done/{kode}")
     public String updateDoneAppointment(@PathVariable String kode, Model model) {
         AppointmentModel appointment = appointmentService.getAppointmentByKode(kode);
-        appointment.setIsDone(true);
-        appointmentService.setDoneAppointment(appointment);
-        TagihanModel tagihan = appointmentService.setTagihan(appointment);
-        model.addAttribute("kode", appointment.getKode());
-        model.addAttribute("tagihan", tagihan);
+        if (appointment.getResep() == null || appointment.getResep().getIsDone()) {
+            appointment.setIsDone(true);
+            appointmentService.setDoneAppointment(appointment);
+            TagihanModel tagihan = appointmentService.setTagihan(appointment);
+            model.addAttribute("kode", appointment.getKode());
+            model.addAttribute("tagihan", tagihan);
+        }
         return "appointment-done";
     }
 }
