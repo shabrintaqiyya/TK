@@ -37,7 +37,7 @@ public class AppointmentModel implements Serializable {
     private LocalDateTime waktuAwal;
 
     @NotNull
-    @Column(name = "is_done", nullable = false)
+    @Column(name = "is_done", nullable = false, columnDefinition = "boolean default false")
     private Boolean isDone;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

@@ -45,6 +45,19 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
               <p th:unless="${appointment.isDone}">Belum Selesai</p>                                
           </div>
         </div>
+        <!-- ngetes tagihannya udh terbuat apa blm -->
+        <!-- <div class="card m-4 p-4">
+          <div class="card-body">
+            <h3>Informasi Tagihan</h3>
+            <p th:text="${tagihan.kode}"></p>
+            <p th:text="${#temporals.format(tagihan.tanggalTerbuat, 'dd-MM-yyyy HH:mm')}}"></p>
+            <p th:text="${#temporals.format(tagihan.tanggalBayar, 'dd-MM-yyyy HH:mm')}}"></p>
+            <p th:if="${tagihan.isPaid}">Sudah Dibayar</p>
+            <p th:unless="${tagihan.isPaid}">Belum Dibayar</p>
+            <p th:text="${tagihan.jumlahTagihan}"></p>
+            <p th:text="${tagihan.appointment.kode}"></p>
+          </div>
+        </div> -->
   </div>
 </body>
 </html>

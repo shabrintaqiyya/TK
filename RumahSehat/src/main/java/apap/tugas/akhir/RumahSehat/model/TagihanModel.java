@@ -37,7 +37,7 @@ public class TagihanModel implements Serializable {
     private LocalDateTime tanggalTerbuat; 
 
     @NotNull
-    @Column(name = "tanggal_bayar", nullable = false, columnDefinition = "TIME")
+    @Column(name = "tanggal_bayar", columnDefinition = "TIME")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalDateTime tanggalBayar; 
 
