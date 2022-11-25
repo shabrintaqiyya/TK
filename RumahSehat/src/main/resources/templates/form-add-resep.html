@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Resep</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Appointment')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2>Add Resep</h2>
+                <br>
+                <form th:action="@{/resep/add/} + ${kodeAppointment}" th:object="${resep}" method="POST">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="vertical-align: middle; text-align: center;">Obat</th>
+                                <th style="vertical-align: middle; text-align: center;">Kuantitas</th>
+                                <th>
+                                    <button class="btn btn-primary" type="submit" name="addRow">Tambah Jenis Obat</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="jml, iterationStatus1 : *{listJumlah}">
+                                <td>
+                                    <select class="js-example-basic-single" name="noObat" th:field="*{listJumlah[__${iterationStatus1.index}__].obat.idObat}">
+                                        <div th:each="obatEx, iterationStatus3 : ${listObat}">
+                                            <option th:value="${obatEx.idObat}" th:text="${obatEx.namaObat}"></option>
+                                        </div>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input required class="form-control" type="number" th:field="*{listJumlah[__${iterationStatus1.index}__].kuantitas}"/>
+                                </td>
+                                <td>
+                                    <button th:value="${iterationStatus1.index}" class="btn btn-danger" type="submit" name="deleteRow">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <button class="btn btn-primary" type="submit" name="save">Submit</button>
+                    <a class="btn btn-primary" href="/">Home</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</body>
+</html>

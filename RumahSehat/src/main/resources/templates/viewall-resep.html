@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Resep</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Resep')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2>List Resep</h2>
+                <br>
+                <div class="my-2 d-flex">
+                    <a class="mx-2 btn btn-primary" href="/">Home</a>
+                </div>
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Waktu dibuat</th>
+                            <th>Status</th>
+                            <th style="vertical-align: middle; text-align: center;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="resep, iterationStatus : ${listResep}">
+                            <td th:text="${resep.id}"></td>
+                            <td th:text="${resep.createdAt}"></td>
+                            <td th:text="${resep.isDone}"></td>
+                            <td style="vertical-align: middle; text-align: center; word-wrap: break-word;">
+                                <a class="mx-1 btn btn-primary" style="width: 50%;" th:href="@{/resep/view(id=${resep.id})}">Detail Resep</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</body>
+</html>

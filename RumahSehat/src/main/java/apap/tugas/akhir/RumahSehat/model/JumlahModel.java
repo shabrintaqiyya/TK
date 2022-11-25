@@ -28,7 +28,7 @@ public class JumlahModel implements Serializable{
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Size(max = 20)
+    // @Size(max = 20)
     @Column(name = "id_jumlah", nullable = false)
     private Long idJumlah;
     

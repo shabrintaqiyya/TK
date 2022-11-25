@@ -50,8 +50,8 @@ public class AppointmentModel implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private DokterModel dokter;
 
-    @OneToMany(mappedBy = "kodeAppointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List<ResepModel> listResep;
+    @OneToOne(mappedBy = "kodeAppointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    ResepModel listResep;
 
     @OneToOne(mappedBy = "kodeAppointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private TagihanModel tagihan;

@@ -28,25 +28,25 @@ public class ResepModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Size(max = 20)
+    // @Size(max = 20)
     @Column(name = "id", nullable = false)
     private Long id;
 
     @NotNull
-    @Column(name = "is_done", nullable = false)
+    @Column(name = "is_done", nullable = false, columnDefinition = "boolean default false")
     private Boolean isDone;
 
     @NotNull
     @Column(name = "created_at", nullable = false, columnDefinition = "TIME")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "confirmer_uuid", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "confirmer_uuid", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)  
     private ApotekerModel confirmerUuid;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "kode_appointment", referencedColumnName = "kode", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)  
     private AppointmentModel kodeAppointment;
