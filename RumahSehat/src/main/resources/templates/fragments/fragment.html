@@ -35,6 +35,12 @@
         <li th:classappend="${page == 'Beranda'} ? active : ''" class="nav-item">
           <a class="nav-link" href="/">Beranda</a>
         </li>
+        <li th:classappend="${page == 'Dokter'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
+          <a class="nav-link" href="/user/viewall-dokter">Dokter</a>
+        </li>
+        <li th:classappend="${page == 'Apoteker'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
+          <a class="nav-link" href="/user/viewall-apoteker">Apoteker</a>
+        </li>
         <li th:classappend="${page == 'Obat'} ? active : ''"class="nav-item" sec:authorize="hasAnyAuthority('Admin', 'Apoteker')">
           <a class="nav-link" href="/user/viewall-obat">Obat</a>
         </li>
