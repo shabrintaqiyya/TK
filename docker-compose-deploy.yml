@@ -1,10 +1,11 @@
 version: '2'
 services:
   web:
-    image: apap-registry.cs.ui.ac.id/shabrina.taqiyya/apap-084
+    # image: apap-registry.cs.ui.ac.id/shabrina.taqiyya/apap-084
+    image: build.
     restart: always
     ports:
-      - "10084:8080"
+      - "10125:8080"
     volumes:
       - ./file-storage:/file-storage
       - ./log:/log
