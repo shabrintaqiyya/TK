@@ -1,8 +1,7 @@
 version: '2'
 services:
   web:
-    # image: apap-registry.cs.ui.ac.id/shabrina.taqiyya/apap-084
-    image: build.
+    image: apap-registry.cs.ui.ac.id/shabrina.taqiyya/apap-125
     restart: always
     ports:
       - "10125:8080"
