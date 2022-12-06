@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.*;
+import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import apap.tugas.akhir.RumahSehat.repository.StringPrefixedSequenceIdGenerator;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
@@ -26,7 +29,15 @@ import java.util.List;
 public class AppointmentModel implements Serializable {
 
     @Id
-    // @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "APT")
+    @GenericGenerator(
+        name = "APT",
+        strategy = "apap.tugas.akhir.RumahSehat.repository.StringPrefixedSequenceIdGenerator",
+        parameters = {
+            @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+            @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "APT-")
+        }
+    )
     @Size(max = 20)
     @Column(name = "kode", nullable = false)
     private String kode;

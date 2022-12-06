@@ -34,8 +34,8 @@ public class DokterServiceImpl implements DokterService{
     }
 
     @Override 
-    public DokterModel getDokterByUsername(String Username) {
-        DokterModel dokter = dokterDb.findByUsername(Username);
+    public DokterModel getDokterByUsername(String username) {
+        DokterModel dokter = dokterDb.findByUsername(username);
         return dokter;
     }
 }
