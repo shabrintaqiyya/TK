@@ -38,16 +38,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public AppointmentModel setDoneAppointment(AppointmentModel appointment) {
         appointment.setIsDone(true);
-        appointmentDb.save(appointment);        
+        setTagihan(appointment);
+        appointmentDb.save(appointment);
         return appointment;
     }
 
     @Override
     public TagihanModel setTagihan(AppointmentModel appointment) {
         TagihanModel tagihan = new TagihanModel();
-        List<TagihanModel> listTagihan = tagihanDb.findAll();
-        long jumlahTagihan = listTagihan.size();
-        tagihan.setKode("BILL-" + jumlahTagihan + 1);
         tagihan.setTanggalTerbuat(LocalDateTime.now());
         tagihan.setIsPaid(false);
         tagihan.setJumlahTagihan(appointment.getDokter().getTarif());

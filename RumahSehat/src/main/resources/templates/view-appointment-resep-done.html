@@ -20,6 +20,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
             <div class="w-50">
               <a th:href="@{/}" class="btn btn-primary">Beranda</a>
             </div>
+            <div class="w-50">
+              <a th:href="@{/user/resep/viewall}" class="btn btn-primary">Detail Resep</a>
+            </div>
           </div>
 
           <div class="w-50">
@@ -50,37 +53,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
           <div class="mb-2 d-flex">
             <div class="w-50">
-                <!-- Button trigger modal konfirmasi selesai appointment tanpa resep-->
-                <button th:if="${resep == null}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#tanpaResepConfirm">
-                  Selesai
-                </button>
+                <a class="btn btn-primary" th:href="@{/user/appointment/done/} + ${appointment.kode}">Selesai</a>                            
             </div>
             <div class="w-50" sec:authorize="hasAuthority('Dokter')">
               <a th:href="@{/user/resep/add/} + ${appointment.kode}" class="btn btn-primary">Create Resep</a>
             </div>
           </div>
-          <!-- Modal Konfirmasi Selesai Tanpa Resep -->
-          <div class="modal fade" id="tanpaResepConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Selesaikan Appointment</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Apakah kamu yakin menyelesaikan appointment tanpa resep ?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <a class="btn btn-primary" th:href="@{/user/appointment/done/} + ${appointment.kode}">Selesai</a>
-                </div>
-              </div>
-            </div>
-          </div>
       </div>
     </div>
+    
   </div>
 </body>
 </html>
