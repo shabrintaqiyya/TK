@@ -31,6 +31,14 @@ public class PasienServiceImpl implements PasienService {
     }
 
     @Override
+    public PasienModel getPasienByKodeTagihan(String kodeTagihan) {
+        Optional<PasienModel> pasien = pasienDb.findPasienByKodeTagihan(kodeTagihan);
+        if (pasien.isPresent()){
+            return pasien.get();
+        } else return null;
+    }
+
+    @Override
     public PasienModel updatePasien(PasienModel pasien) {
         pasienDb.save(pasien);
         return pasien;
