@@ -6,6 +6,7 @@ import apap.tugas.akhir.RumahSehat.repository.PasienDb;
 import apap.tugas.akhir.RumahSehat.repository.TagihanDb;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +34,9 @@ public class TagihanServiceImpl implements TagihanService{
     }
 
     @Override
-    public TagihanModel getTagihanByIdPasien(String idPasien) {
-        Optional<TagihanModel> tagihan = tagihanDb.findTagihanByIdPasien(idPasien);
-        if (tagihan.isPresent()){
-            return tagihan.get();
-        } else return null;
+    public Collection<TagihanModel> getTagihanByIdPasien(String idPasien) {
+        Collection<TagihanModel> tagihans = tagihanDb.findTagihanByIdPasien(idPasien);
+        return tagihans;
     }
 
     @Override

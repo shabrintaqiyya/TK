@@ -8,6 +8,7 @@ import apap.tugas.akhir.RumahSehat.rest.Setting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,13 +42,10 @@ public class TagihanRestServiceImpl implements TagihanRestService{
     }
 
     @Override
-    public TagihanModel getTagihanByIdPasien(String idPasien) {
-        Optional<TagihanModel> tagihan = tagihanDb.findTagihanByIdPasien(idPasien);
-        if (tagihan.isPresent()){
-            return tagihan.get();
-        } else return null;
+    public Collection<TagihanModel> getTagihanByIdPasien(String idPasien) {
+        Collection<TagihanModel> tagihans = tagihanDb.findTagihanByIdPasien(idPasien);
+        return tagihans;
     }
-
     @Override
     public TagihanModel updateTagihan(TagihanModel tagihan) {
         tagihanDb.save(tagihan);

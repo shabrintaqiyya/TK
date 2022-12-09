@@ -36,7 +36,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="tagihan : ${pasien.listAppointment?}">
+          <tr th:each="tagihan : ${listTagihan?}">
             <td th:text="${tagihan.kode}"></td>
             <td th:text="${tagihan.tanggalTerbuat} +' SKS'"></td>
             <td th:text="${tagihan.tanggalBayar}"></td>

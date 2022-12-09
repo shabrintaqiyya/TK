@@ -17,7 +17,10 @@ public interface TagihanDb extends JpaRepository<TagihanModel, String> {
     Optional<TagihanModel> findByKode(String kode);
 
     @Query(nativeQuery = true, value = "SELECT T FROM appointment A, pasien P, tagihan T WHERE P.id = :idPasien AND P.id = A.id_pasien AND A.kode = T.kode_appointment")
-    Optional<TagihanModel> findTagihanByIdPasien(@Param("idPasien") String idPasien);
+    Collection<TagihanModel> findTagihanByIdPasien(@Param("idPasien") String idPasien);
+
+    @Query(nativeQuery = true, value = "SELECT T FROM appointment A, pasien P, tagihan T WHERE P.id = :idPasien AND A.kode = kodeAppointment AND P.id = A.id_pasien AND A.kode = T.kode_appointment")
+    Collection<TagihanModel> findTagihanByIdPasienAndKodeAppointment(@Param("idPasien") String idPasien, @Param("kodeAppointment") String kodeAppointment);
 
     
 }
