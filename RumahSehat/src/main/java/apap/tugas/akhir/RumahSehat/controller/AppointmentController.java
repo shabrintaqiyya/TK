@@ -2,7 +2,6 @@ package apap.tugas.akhir.RumahSehat.controller;
 
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
-import apap.tugas.akhir.RumahSehat.model.PasienModel;
 import apap.tugas.akhir.RumahSehat.model.TagihanModel;
 import apap.tugas.akhir.RumahSehat.model.UserModel;
 import apap.tugas.akhir.RumahSehat.service.*;

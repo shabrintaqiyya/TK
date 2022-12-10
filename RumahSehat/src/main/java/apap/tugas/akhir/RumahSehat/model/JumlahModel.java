@@ -1,6 +1,5 @@
 package apap.tugas.akhir.RumahSehat.model;
 
-import java.time.LocalDateTime;
 
 import javax.persistence.Id;
 
@@ -8,14 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Setter
@@ -28,7 +24,6 @@ public class JumlahModel implements Serializable{
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    // @Size(max = 20)
     @Column(name = "id_jumlah", nullable = false)
     private Long idJumlah;
     

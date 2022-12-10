@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -23,7 +22,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="dokter")
-// @DiscriminatorValue("2")
 public class DokterModel extends UserModel implements Serializable{
 
     @NotNull

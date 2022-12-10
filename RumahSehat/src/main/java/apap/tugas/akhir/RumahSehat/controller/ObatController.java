@@ -1,9 +1,7 @@
 package apap.tugas.akhir.RumahSehat.controller;
 
 import apap.tugas.akhir.RumahSehat.model.ObatModel;
-import apap.tugas.akhir.RumahSehat.service.DokterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +10,6 @@ import apap.tugas.akhir.RumahSehat.service.ObatService;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
