@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import apap.tugas.akhir.RumahSehat.service.AppointmentRestService;
-import apap.tugas.akhir.RumahSehat.service.UserRestService;
+// import apap.tugas.akhir.RumahSehat.service.UserRestService;
+import apap.tugas.akhir.RumahSehat.service.UserService;
 import apap.tugas.akhir.RumahSehat.service.DokterRestService;
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
@@ -30,7 +31,7 @@ public class AppointmentRestController {
     private AppointmentRestService appointmentRestService;
 
     @Autowired
-    private UserRestService userRestService;
+    private UserService userService;
 
     @Autowired
     private DokterRestService dokterRestService;
@@ -50,7 +51,7 @@ public class AppointmentRestController {
 
     @GetMapping(value = "appointment/{username}")
     public List<AppointmentModel> retrieveListAppointment(@PathVariable("username") String username) {
-        UserModel user = userRestService.getUserByUsername(username);
+        UserModel user = userService.getUserByUsername(username);
         if (user.getRole().equals("Dokter")) {
             DokterModel dokter = dokterRestService.getDokterByUsername(username);
             return dokterRestService.getListAppointmentInDokter(dokter);

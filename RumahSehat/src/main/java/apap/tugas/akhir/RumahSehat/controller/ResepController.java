@@ -19,7 +19,6 @@ import apap.tugas.akhir.RumahSehat.model.JumlahModel;
 import apap.tugas.akhir.RumahSehat.model.ObatModel;
 import apap.tugas.akhir.RumahSehat.model.ResepModel;
 import apap.tugas.akhir.RumahSehat.service.AppointmentService;
-// import apap.tugas.akhir.RumahSehat.service.JumlahService;
 import apap.tugas.akhir.RumahSehat.service.ObatService;
 import apap.tugas.akhir.RumahSehat.service.ResepService;
 
@@ -32,9 +31,6 @@ public class ResepController {
 
     @Autowired
     private ObatService obatService;
-
-    // @Autowired
-    // private JumlahService jumlahService;
 
     @Autowired
     private AppointmentService appointmentService;

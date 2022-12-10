@@ -27,7 +27,6 @@ import apap.tugas.akhir.RumahSehat.model.UserModel;
 import apap.tugas.akhir.RumahSehat.security.xml.Attributes;
 import apap.tugas.akhir.RumahSehat.security.xml.ServiceResponse;
 import apap.tugas.akhir.RumahSehat.service.AdminService;
-// import apap.tugas.akhir.RumahSehat.service.RoleService;
 import apap.tugas.akhir.RumahSehat.service.UserService;
 import apap.tugas.akhir.RumahSehat.setting.Setting;
 
@@ -53,9 +52,6 @@ public class PageController {
         )
     );
 
-    // @Autowired
-    // private RoleService roleService;
-
     @RequestMapping("/")
     private String home() {
         return "home";
@@ -63,7 +59,6 @@ public class PageController {
 
     @RequestMapping("/login")
     private String login(Model model) {
-        model.addAttribute("port", serverProperties.getPort());
         return "login";
     }
 
@@ -87,13 +82,8 @@ public class PageController {
         Attributes attributes = serviceResponse.getAuthenticationSuccess().getAttributes();
         String username = serviceResponse.getAuthenticationSuccess().getUser();
 
-        // System.out.println("INIII USERNAMEE "+username);
-        
         AdminModel admin = adminService.getUserByUsername(username);
         
-        // System.out.println(admin.getNama());
-        
-
         if (admin == null && whiteList.contains(username)) {
             admin = new AdminModel();
             admin.setEmail(username + "@ui.ac.id");
@@ -103,23 +93,9 @@ public class PageController {
             admin.setIsSso(true);
             admin.setRole("Admin");
             adminService.addAdmin(admin);
-
-            // user = new UserModel();
-            // user.setEmail(username + "@ui.ac.id");
-            // user.setNama(attributes.getNama());
-            // user.setPassword("belajarbelajar");
-            // user.setUsername(username);
-            // user.setIsSso(true);
-            // user.setRole(roleService.getById(Long.valueOf(0)));
-            // userService.addUser(user);
         }
-        // else{
-        //     return new ModelAndView("login");
-        // }
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, "rumahsehat");
-        
-        // System.out.println("TTTTTTTTTTTT "+ authentication);
         
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(authentication);
@@ -139,7 +115,6 @@ public class PageController {
     @GetMapping(value = "logout-sso")
     public ModelAndView logoutSSO(Principal principal) {
         UserModel user = userService.getUserByUsername(principal.getName());
-        // System.out.println("PRIINNTT "+user.getIsSso());
         if (user.getIsSso() == false) {
             return new ModelAndView("redirect:/logout");
         }

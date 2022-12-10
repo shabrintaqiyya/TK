@@ -3,10 +3,12 @@ package apap.tugas.akhir.RumahSehat.service;
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
 import apap.tugas.akhir.RumahSehat.repository.PasienDb;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PasienServiceImpl implements PasienService {
 
     @Autowired
@@ -19,6 +21,11 @@ public class PasienServiceImpl implements PasienService {
 
     @Override
     public List<PasienModel> getAllPasien() {
+        return pasienDb.findAll();
+    }    
+    
+    @Override
+    public List<PasienModel> getListPasien(){
         return pasienDb.findAll();
     }
 
