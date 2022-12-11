@@ -49,7 +49,7 @@ public class UserController {
         dokterService.addDokter(dokter);
 
         model.addAttribute("dokter", dokter);
-        log.info("Menambahkan dokter baru");
+        log.info("Admin menambahkan dokter baru");
         return "redirect:/";
     }
     
@@ -69,7 +69,7 @@ public class UserController {
         apotekerService.addApoteker(apoteker);
 
         model.addAttribute("user", apoteker);
-        log.info("Menambahkan apoteker");
+        log.info("Admin menambahkan apoteker");
         return "redirect:/";
     }
 
@@ -77,7 +77,7 @@ public class UserController {
     public String listDokter(Model model){
         List<DokterModel> listDokter = dokterService.getListDokter();
         model.addAttribute("listDokter", listDokter);
-        log.info("Melihat daftar dokter");
+        log.info("Admin melihat daftar dokter");
         return "viewall-dokter";
     }
 
@@ -85,7 +85,7 @@ public class UserController {
     public String listApoteker(Model model){
         List<ApotekerModel> listApoteker = apotekerService.getListApoteker();
         model.addAttribute("listApoteker", listApoteker);
-        log.info("Melihat daftar apoteker");
+        log.info("Admin melihat daftar apoteker");
         return "viewall-apoteker";
     }
 
@@ -93,7 +93,7 @@ public class UserController {
     public String listPasien(Model model){
         List<PasienModel> listPasien = pasienService.getListPasien();
         model.addAttribute("listPasien", listPasien);
-        log.info("Melihat daftar pasien");
+        log.info("Admin melihat daftar pasien");
         return "viewall-pasien";
     }
 

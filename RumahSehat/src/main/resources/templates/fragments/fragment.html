@@ -50,6 +50,9 @@
         <li th:classappend="${page == 'BuatResep'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Dokter')">
           <a class="nav-link" href="/user/tambah-resep">Buat Resep</a>
         </li>
+        <li th:classappend="${page == 'Tagihan'} ? active : ''"class="nav-item" sec:authorize="hasAuthority('Admin')">
+          <a class="nav-link" th:href="@{/chart}">Tagihan</a>
+        </li>
       </ul>
 <!--      <form class="form-inline my-2 my-lg-0" th:action="@{/course/view}" method="GET">-->
 <!--        <input class="form-control mr-sm-2" type="search"-->

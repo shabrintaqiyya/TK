@@ -9,14 +9,14 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
     # sesuaikan nama database anda dengan di bawah ini
-    # url: jdbc:mysql://localhost:3306/rumahsehat?useSSL=false&serverTimezone=Asia/Jakarta
-    url: jdbc:mysql://localhost:3306/apap_db?useSSL=false&serverTimezone=Asia/Jakarta
+    url: jdbc:mysql://localhost:3306/rumahsehat?useSSL=false&serverTimezone=Asia/Jakarta
+    # url: jdbc:mysql://localhost:3306/apap_db?useSSL=false&serverTimezone=Asia/Jakarta
 
     # sesuaikan dengan NAMA dan PASSWORD anda dengan username password di bawah ini
-    # username: root
-    # password: 
-    username: apap_user
-    password: password1234!
+    username: root
+    password: 
+    # username: apap_user
+    # password: password1234!
 
   jpa:
     properties:
@@ -33,7 +33,7 @@ spring:
 
   security:
     jwt:
-      secret-key: "kelompok84"
+      secret-key: kelompok84
       # in milliseconds (5 mins)
       expire-length: 300000
 

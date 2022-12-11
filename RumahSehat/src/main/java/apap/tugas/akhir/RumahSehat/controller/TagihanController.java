@@ -52,6 +52,11 @@ public class TagihanController {
         }
     }
 
+    @GetMapping("/chart")
+    public String viewStatistics(Model model) {
+        return "chart";
+    }
+
     /*
     @GetMapping("/pasien/{id}/{kode}/konfirmasi}")
     public String formBayarTagihanSubmit(@ModelAttribute TagihanModel tagihan, PasienModel pasien, Model model) {

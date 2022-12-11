@@ -57,7 +57,7 @@ public class PageController {
 
     @RequestMapping("/")
     private String home() {
-        log.info("Mengakses homepage");
+        log.info("User mengakses homepage");
         return "home";
     }
 
@@ -107,7 +107,7 @@ public class PageController {
         HttpSession httpSession = request.getSession(true);
         httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
         
-        log.info("Berhasil login");
+        log.info(admin.getUsername() +" erhasil login");
         return new ModelAndView("redirect:/");
     }
 
@@ -122,10 +122,10 @@ public class PageController {
     public ModelAndView logoutSSO(Principal principal) {
         UserModel user = userService.getUserByUsername(principal.getName());
         if (user.getIsSso() == false) {
-            log.info("Berhasil logout");
+            log.info("User berhasil logout");
             return new ModelAndView("redirect:/logout");
         }
-        log.info("Berhasil logout dengan SSO");
+        log.info("Admin berhasil logout dengan SSO");
         return new ModelAndView("redirect:" + Setting.SERVER_LOGOUT + Setting.CLIENT_LOGOUT);
     }
 }
