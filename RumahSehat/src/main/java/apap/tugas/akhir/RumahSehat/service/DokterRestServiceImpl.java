@@ -20,7 +20,7 @@ public class DokterRestServiceImpl implements DokterRestService {
     public final WebClient webClient;
 
     public DokterRestServiceImpl(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(Setting.dokterUrl).build();
+        this.webClient = webClientBuilder.baseUrl(Setting.userUrl).build();
     }
 
     @Autowired

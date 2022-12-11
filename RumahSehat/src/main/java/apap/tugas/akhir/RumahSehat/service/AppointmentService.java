@@ -10,4 +10,5 @@ public interface AppointmentService {
     AppointmentModel getAppointmentByKode(String kode);
     AppointmentModel setDoneAppointment(AppointmentModel appointment);
     TagihanModel setTagihan(AppointmentModel appointment);
+    AppointmentModel createAppointment(AppointmentModel appointment);
 }
