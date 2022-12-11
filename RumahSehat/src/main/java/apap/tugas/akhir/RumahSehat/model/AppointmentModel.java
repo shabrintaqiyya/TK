@@ -8,8 +8,6 @@ import org.hibernate.annotations.*;
 import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import apap.tugas.akhir.RumahSehat.repository.StringPrefixedSequenceIdGenerator;
-
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,22 +27,18 @@ import java.util.List;
 public class AppointmentModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "APT")
+    @GeneratedValue(generator = "apt-generator")
     @GenericGenerator(
-        name = "APT",
-        strategy = "apap.tugas.akhir.RumahSehat.repository.StringPrefixedSequenceIdGenerator",
-        parameters = {
-            @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-            @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "APT-")
-        }
+        name = "apt-generator",
+        strategy = "apap.tugas.akhir.RumahSehat.generator.AptKodeGenerator",
+        parameters = @Parameter(name = "prefix", value = "APT")
     )
-    @Size(max = 20)
     @Column(name = "kode", nullable = false)
     private String kode;
 
     @NotNull
     @Column(name = "waktu_awal", nullable = false, columnDefinition = "TIME")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime waktuAwal;
 
     @NotNull
