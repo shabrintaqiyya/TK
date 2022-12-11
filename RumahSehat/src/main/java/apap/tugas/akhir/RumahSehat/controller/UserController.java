@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -36,6 +38,7 @@ public class UserController {
     private String addDokterFormPage(Model model) {
         DokterModel dokter = new DokterModel();
         model.addAttribute("dokter", dokter);
+        // log.info("Menambahkan dokter");
         return "form-add-dokter";
     }
 
@@ -46,6 +49,7 @@ public class UserController {
         dokterService.addDokter(dokter);
 
         model.addAttribute("dokter", dokter);
+        log.info("Menambahkan dokter baru");
         return "redirect:/";
     }
     
@@ -54,6 +58,7 @@ public class UserController {
     private String addApotekerFormPage(Model model) {
         ApotekerModel apoteker = new ApotekerModel();
         model.addAttribute("apoteker", apoteker);
+        // log.info("Menambahkan apoteker");
         return "form-add-apoteker";
     }
 
@@ -64,6 +69,7 @@ public class UserController {
         apotekerService.addApoteker(apoteker);
 
         model.addAttribute("user", apoteker);
+        log.info("Menambahkan apoteker");
         return "redirect:/";
     }
 
@@ -71,6 +77,7 @@ public class UserController {
     public String listDokter(Model model){
         List<DokterModel> listDokter = dokterService.getListDokter();
         model.addAttribute("listDokter", listDokter);
+        log.info("Melihat daftar dokter");
         return "viewall-dokter";
     }
 
@@ -78,6 +85,7 @@ public class UserController {
     public String listApoteker(Model model){
         List<ApotekerModel> listApoteker = apotekerService.getListApoteker();
         model.addAttribute("listApoteker", listApoteker);
+        log.info("Melihat daftar apoteker");
         return "viewall-apoteker";
     }
 
@@ -85,6 +93,7 @@ public class UserController {
     public String listPasien(Model model){
         List<PasienModel> listPasien = pasienService.getListPasien();
         model.addAttribute("listPasien", listPasien);
+        log.info("Melihat daftar pasien");
         return "viewall-pasien";
     }
 

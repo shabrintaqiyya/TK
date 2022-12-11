@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+<<<<<<< HEAD
+import 'package:shared_preferences/shared_preferences.dart';
+=======
+>>>>>>> 2f4c2c585ff2ff0f97488f325f88cd9e2ebd6514
 import '../../login-logout/Components/background.dart';
 import '../../login-logout/Components/rounded_button.dart';
 import '../../login-logout/Components/rounded_input_field.dart';
@@ -120,6 +124,14 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+<<<<<<< HEAD
+addSharedPref(jwtToken) async {
+  SharedPreferences sp = await SharedPreferences.getInstance();
+  sp.setString('jwtToken', jwtToken);
+}
+
+=======
+>>>>>>> 2f4c2c585ff2ff0f97488f325f88cd9e2ebd6514
 Future<bool> login(String username, String password) async {
   // final Dio dio = new Dio();
   // var url = 'https://api.genderize.io/?name=' + username;
@@ -145,7 +157,15 @@ Future<bool> login(String username, String password) async {
   );
 
   print(response.statusCode);
+<<<<<<< HEAD
+  // print(json.decode(response.body)['jwttoken']);
+
+  String token = json.decode(response.body)['jwttoken'];
+  print(token);
+  addSharedPref(token);
+=======
   print(response.body);
+>>>>>>> 2f4c2c585ff2ff0f97488f325f88cd9e2ebd6514
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
