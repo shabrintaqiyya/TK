@@ -15,6 +15,10 @@ import org.springframework.web.server.ResponseStatusException;
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
 import apap.tugas.akhir.RumahSehat.service.PasienRestService;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/")
 public class PasienRestController {
@@ -29,6 +33,7 @@ public class PasienRestController {
                     HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field."
             );
         } else {
+            log.info("Melakukan registrasi pasien");
             return pasienRestService.createPasien(pasien);
         }
     }
