@@ -1,16 +1,11 @@
 package apap.tugas.akhir.RumahSehat.service;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
@@ -19,23 +14,12 @@ import apap.tugas.akhir.RumahSehat.repository.AppointmentDb;
 import apap.tugas.akhir.RumahSehat.repository.DokterDb;
 import apap.tugas.akhir.RumahSehat.repository.PasienDb;
 import apap.tugas.akhir.RumahSehat.rest.AptDetail;
-import apap.tugas.akhir.RumahSehat.rest.DokterDetail;
-import apap.tugas.akhir.RumahSehat.rest.PasienDetail;
-import apap.tugas.akhir.RumahSehat.rest.Setting;
 
 @Service
 @Transactional
 public class AppointmentRestServiceImpl implements AppointmentRestService {
     @Autowired
     private AppointmentDb appointmentDb;
-    // public final WebClient webClient;
-    
-    // public AppointmentRestServiceImpl(WebClient.Builder webClientBuilder) {
-    //     this.webClient = webClientBuilder.baseUrl(Setting.appointmentUrl).build();
-    // }
-
-    // @Autowired
-    // private AppointmentDb appointmentDb;
 
     @Autowired
     private DokterDb dokterDb;
@@ -58,7 +42,6 @@ public class AppointmentRestServiceImpl implements AppointmentRestService {
     @Override
     public AppointmentModel createAppointment(DokterModel dokter, PasienModel pasien, AptDetail aptDTO) {
         AppointmentModel appointment = new AppointmentModel();
-        // System.out.println();
         appointment.setIsDone(false);
         appointment.setWaktuAwal(aptDTO.getWaktuAwal());
         appointment.setDokter(dokter);
