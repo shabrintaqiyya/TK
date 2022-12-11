@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import apap.tugas.akhir.RumahSehat.service.AppointmentRestService;
+import apap.tugas.akhir.RumahSehat.service.AppointmentService;
+// import apap.tugas.akhir.RumahSehat.service.UserRestService;
 // import apap.tugas.akhir.RumahSehat.service.UserRestService;
 import apap.tugas.akhir.RumahSehat.service.UserService;
 import apap.tugas.akhir.RumahSehat.service.DokterRestService;
@@ -28,7 +30,7 @@ import apap.tugas.akhir.RumahSehat.model.UserModel;
 @RequestMapping("/api/v1")
 public class AppointmentRestController {
     @Autowired
-    private AppointmentRestService appointmentRestService;
+    private AppointmentService appointmentService;
 
     @Autowired
     private UserService userService;
@@ -36,38 +38,38 @@ public class AppointmentRestController {
     @Autowired
     private DokterRestService dokterRestService;
     
-    @PostMapping(value = "add/appointment")
-    private AppointmentModel createAppointment(@Valid @RequestBody AppointmentModel appointment, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
-            throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field."
-            );
-        }
-        else {
-            return appointmentRestService.createAppointment(appointment);
-        }
-    }
+    // @PostMapping(value = "appointment/add")
+    // private AppointmentDTO createAppointment(@Valid @RequestBody AppointmentDTO appointment, BindingResult bindingResult) {
+    //     if (bindingResult.hasFieldErrors()) {
+    //         throw new ResponseStatusException(
+    //             HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field."
+    //         );
+    //     }
+    //     else {
+    //         return appointmentService.createAppointment(appointment);
+    //     }
+    // }
 
 
-    @GetMapping(value = "appointment/{username}")
-    public List<AppointmentModel> retrieveListAppointment(@PathVariable("username") String username) {
-        UserModel user = userService.getUserByUsername(username);
-        if (user.getRole().equals("Dokter")) {
-            DokterModel dokter = dokterRestService.getDokterByUsername(username);
-            return dokterRestService.getListAppointmentInDokter(dokter);
-        }
-        return appointmentRestService.retrieveListAppointment();
-    }
+    // @GetMapping(value = "appointment/{username}")
+    // public List<AppointmentDTO> retrieveListAppointment(@PathVariable("username") String username) {
+    //     UserModel user = userRestService.getUserByUsername(username);
+    //     if (user.getRole().equals("Dokter")) {
+    //         DokterModel dokter = dokterRestService.getDokterByUsername(username);
+    //         return dokterRestService.getListAppointmentInDokter(dokter);
+    //     }
+    //     return appointmentRestService.retrieveListAppointment();
+    // }
 
-    // Retrieve
-    @GetMapping(value = "appointment/{kode}")
-    private AppointmentModel retrieveApt(@PathVariable("kode") String kode) {
-        try {
-            return appointmentRestService.getAppointmentByKode(kode);
-        } catch (NoSuchElementException e) {
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Appointment kode " + kode + " not found"
-            );
-        }
-    }
+    // // Retrieve
+    // @GetMapping(value = "appointment/{kode}")
+    // private AppointmentDTO retrieveApt(@PathVariable("kode") String kode) {
+    //     try {
+    //         return appointmentRestService.getAppointmentByKode(kode);
+    //     } catch (NoSuchElementException e) {
+    //         throw new ResponseStatusException(
+    //             HttpStatus.NOT_FOUND, "Appointment kode " + kode + " not found"
+    //         );
+    //     }
+    // }
 }

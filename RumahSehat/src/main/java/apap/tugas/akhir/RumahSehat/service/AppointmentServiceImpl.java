@@ -53,4 +53,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         tagihanDb.save(tagihan);
         return tagihan;
     }
+
+    @Override
+    public AppointmentModel createAppointment(AppointmentModel appointment) {
+        return appointmentDb.save(appointment);
+    }
 }
