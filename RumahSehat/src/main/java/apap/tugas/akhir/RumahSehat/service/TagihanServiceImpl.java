@@ -1,5 +1,14 @@
 package apap.tugas.akhir.RumahSehat.service;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import apap.tugas.akhir.RumahSehat.model.TagihanModel;
+import apap.tugas.akhir.RumahSehat.repository.TagihanDb;
+
+
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
 import apap.tugas.akhir.RumahSehat.model.TagihanModel;
 import apap.tugas.akhir.RumahSehat.repository.PasienDb;
@@ -10,6 +19,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class TagihanServiceImpl implements TagihanService{
     @Autowired
     TagihanDb tagihanDb;

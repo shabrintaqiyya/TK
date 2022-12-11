@@ -55,6 +55,20 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public AppointmentModel getAppointmentByKodeModel(AppointmentModel kode) {
+        String kodenya = kode.getKode();
+        Optional<AppointmentModel> appointment = appointmentDb.findByKode(kodenya);
+        if (appointment.isPresent()) {
+            return appointment.get();
+        } else return null;
+    }
+
+    @Override
+    public void addAppointment(AppointmentModel appointment) {
+        appointmentDb.save(appointment);
+    }
+
+    @Override
     public AppointmentModel createAppointment(AppointmentModel appointment) {
         return appointmentDb.save(appointment);
     }

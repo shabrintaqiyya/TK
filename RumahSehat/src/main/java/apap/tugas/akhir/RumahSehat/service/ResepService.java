@@ -8,4 +8,5 @@ public interface ResepService {
     void addResep(ResepModel resep);
     // ResepModel setAppointment(AppointmentModel appointment);
     List<ResepModel> getListResep();
+    ResepModel getResepById(Long id);
 }

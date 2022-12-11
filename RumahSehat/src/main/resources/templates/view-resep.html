@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Resep</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Resep')"></nav>
+<div class="container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2>Detail Resep</h2>
+        <br>
+        <p th:text="'Id : ' + ${resep.id}"></p>
+        <p th:text="'Nama Dokter : ' + ${appointment.dokter.nama}"></p>
+        <p th:text="'Nama Pasien : ' + ${appointment.pasien.nama}"></p>
+        <p>
+          <span th:if="${resep.isDone} == false" th:text="'Status : Belum selesai'"></span>
+          <span th:if="${resep.isDone} == true" th:text="'Status : Selesai'"></span>
+        </p>
+        <p th:text="'Nama Apoteker : ' + ${resep.confirmerUuid}"></p>
+        <p th:text="'Daftar Obat : '"></p>
+        <br>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="text-align: center; vertical-align: middle;">No</th>
+              <th style="text-align: center; vertical-align: middle;">Nama Obat</th>
+              <th style="text-align: center; vertical-align: middle;">Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="jml, iterationStatus : ${listJumlah}">
+              <td th:text="${iterationStatus.count}" style="text-align: center"></td>
+              <td th:text="${jml.obat.getNamaObat()}"></td>
+              <td th:text="${jml.kuantitas}" style="text-align: center"></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <tr th:if="${resep.isDone} == false">
+          <form sec:authorize="hasAuthority('Admin')" th:action="@{/user/resep/konfirmasi}" th:object="${resep}" method="POST">
+            <input type="hidden" th:field="*{id}">
+            <input type="submit" value="Konfirmasi resep" class="btn btn-primary">
+          </form><br>
+        </tr>
+        
+        <a class="btn btn-primary" href="/user/resep/viewall">Kembali</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -10,5 +10,7 @@ public interface AppointmentService {
     AppointmentModel getAppointmentByKode(String kode);
     AppointmentModel setDoneAppointment(AppointmentModel appointment);
     TagihanModel setTagihan(AppointmentModel appointment);
+    AppointmentModel getAppointmentByKodeModel(AppointmentModel kode);
+    void addAppointment(AppointmentModel appointment);
     AppointmentModel createAppointment(AppointmentModel appointment);
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import apap.tugas.akhir.RumahSehat.model.JumlahModel;
+import apap.tugas.akhir.RumahSehat.model.ObatModel;
 import apap.tugas.akhir.RumahSehat.repository.JumlahDb;
 
 @Service
@@ -23,6 +24,12 @@ public class JumlahServiceImpl implements JumlahService{
     @Override
     public List<JumlahModel> getListJumlah() {
         return jumlahDb.findAll();
+    }
+
+    @Override
+    public String getNamaObat(ObatModel obat) {
+        String namaObat = obat.getNamaObat();
+        return namaObat;
     }
     
 }
