@@ -3,6 +3,7 @@ package apap.tugas.akhir.RumahSehat.service;
 import java.util.List;
 
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
+import apap.tugas.akhir.RumahSehat.model.DokterModel;
 import apap.tugas.akhir.RumahSehat.model.TagihanModel;
 
 public interface AppointmentService {
