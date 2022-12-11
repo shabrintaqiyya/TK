@@ -16,32 +16,32 @@ import apap.tugas.akhir.RumahSehat.rest.Setting;
 @Service
 @Transactional
 public class AppointmentRestServiceImpl implements AppointmentRestService {
-    public final WebClient webClient;
+    // public final WebClient webClient;
     
-    public AppointmentRestServiceImpl(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(Setting.appointmentUrl).build();
-    }
+    // public AppointmentRestServiceImpl(WebClient.Builder webClientBuilder) {
+    //     this.webClient = webClientBuilder.baseUrl(Setting.appointmentUrl).build();
+    // }
 
-    @Autowired
-    private AppointmentDb appointmentDb;
+    // @Autowired
+    // private AppointmentDb appointmentDb;
 
-    @Override 
-    public AppointmentModel createAppointment(AppointmentModel appointment) {
-        return appointmentDb.save(appointment);
-    }
+    // @Override 
+    // public AppointmentDTO createAppointment(AppointmentDTO appointment) {
+    //     return appointmentDb.save(appointment);
+    // }
     
-    @Override
-    public List<AppointmentModel> retrieveListAppointment() {
-        return appointmentDb.findAll();
-    }
+    // @Override
+    // public List<AppointmentDTO> retrieveListAppointment() {
+    //     return appointmentDb.findAll();
+    // }
 
-    @Override 
-    public AppointmentModel getAppointmentByKode(String kode) {
-        Optional<AppointmentModel> appointment = appointmentDb.findByKode(kode);
-        if (appointment.isPresent()) {
-            return appointment.get();
-        } else {
-            throw new NoSuchElementException();
-        }
-    }
+    // @Override 
+    // public AppointmentDTO getAppointmentByKode(String kode) {
+    //     Optional<AppointmentDTO> appointment = appointmentDb.findByKode(kode);
+    //     if (appointment.isPresent()) {
+    //         return appointment.get();
+    //     } else {
+    //         throw new NoSuchElementException();
+    //     }
+    // }
 }

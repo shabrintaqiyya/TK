@@ -75,7 +75,7 @@ public class AppointmentController {
         AppointmentModel appointment = appointmentService.getAppointmentByKode(kode);
         if (appointment.getResep() == null || appointment.getResep().getIsDone()) {
             AppointmentModel appointmentUpdate =  appointmentService.setDoneAppointment(appointment);
-            model.addAttribute("kode", appointmentUpdate.getKode());
+            // model.addAttribute("kode", appointmentUpdate);
         }
         model.addAttribute("appointment", appointment);
         return "appointment-done";
