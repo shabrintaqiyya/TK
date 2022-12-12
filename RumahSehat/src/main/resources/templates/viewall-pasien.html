@@ -17,6 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                 <h2>Daftar Pasien</h2>
                 <br>
                 <!-- <a th:href="@{/user/add-dokter}" class="mx-2 btn btn-outline-success">Tambah Dokter</a> -->
+                <a th:href="@{/user/add-pasien}" class="mx-2 btn btn-outline-success">Tambah Pasien</a>
                 <a class="btn btn-primary" th:href="@{/}">Beranda</a>
                 <br>
                 <br>
@@ -41,6 +42,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                             <td th:text="${pasien.email}"></td>
                             <td th:text="${pasien.umur}"></td>
                             <td th:text="${pasien.saldo}"></td>
+                            <td>
+                                <div class="col">
+                                    <a class="btn btn-primary" th:href="@{/user/pasien/} + ${pasien.id}">Profil</a>
+                                </div>
                             <!-- <td>
                                 <a class="btn btn-sm btn-danger" th:href="@{/user/delete/} + ${user.username}">Delete</a>
                             </td> -->
