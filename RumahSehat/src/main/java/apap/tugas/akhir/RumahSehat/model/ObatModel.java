@@ -28,6 +28,7 @@ import java.time.LocalDateTime;
 @Table(name="obat")
 public class ObatModel implements Serializable{
 
+    
     @Id
     // @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Size(max = 20)
