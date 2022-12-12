@@ -31,7 +31,7 @@ public class TagihanController {
         return "form-bayar-tagihan";
     }
 
-    @PostMapping("/pasien/{id}/{kode}/}")
+    @PostMapping("/pasien/{id}/{kode}}")
     public String formBayarTagihanKonfirmasi(@ModelAttribute TagihanModel tagihan, Model model) {
         TagihanModel tempTagihan = tagihanService.getTagihanByKode(tagihan.getKode());
         PasienModel tempPasien = pasienService.getPasienByKodeTagihan(tagihan.getKode());

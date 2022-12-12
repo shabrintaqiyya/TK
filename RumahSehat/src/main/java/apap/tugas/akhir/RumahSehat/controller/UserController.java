@@ -73,6 +73,25 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/add-pasien")
+    private String addPasienFormPage(Model model) {
+        PasienModel pasien = new PasienModel();
+        model.addAttribute("pasien", pasien);
+        // log.info("Menambahkan pasien");
+        return "form-add-pasien";
+    }
+
+    @PostMapping("/add-pasien")
+    private String addPasienSubmit(@ModelAttribute PasienModel pasien, Model model) {
+        pasien.setIsSso(false);
+
+        pasienService.addPasien(pasien);
+
+        model.addAttribute("user", pasien);
+        log.info("Admin menambahkan pasien");
+        return "redirect:/";
+    }
+
     @GetMapping("/viewall-dokter")
     public String listDokter(Model model){
         List<DokterModel> listDokter = dokterService.getListDokter();
