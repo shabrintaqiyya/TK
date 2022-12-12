@@ -10,6 +10,7 @@ public interface ApotekerService {
     List<ApotekerModel> getListApoteker();
     ApotekerModel addApoteker(ApotekerModel apoteker);
     public String encrypt(String password);
+    ApotekerModel getApotekerByUsername(String username);
     // void deleteUser(UserModel user);
     // boolean updatePassword(UserModel username, String oldPass, String newPass, String confirmPass);
 }

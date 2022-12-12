@@ -1,6 +1,5 @@
 package apap.tugas.akhir.RumahSehat.repository;
 
-import apap.tugas.akhir.RumahSehat.model.PasienModel;
 import apap.tugas.akhir.RumahSehat.model.TagihanModel;
 
 import org.springframework.data.jpa.repository.JpaRepository;

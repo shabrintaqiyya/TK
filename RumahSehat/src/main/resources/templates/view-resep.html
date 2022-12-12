@@ -21,7 +21,10 @@
           <span th:if="${resep.isDone} == false" th:text="'Status : Belum selesai'"></span>
           <span th:if="${resep.isDone} == true" th:text="'Status : Selesai'"></span>
         </p>
-        <p th:text="'Nama Apoteker : ' + ${resep.confirmerUuid}"></p>
+        <p>
+          <span th:if="${resep.confirmerUuid} == null" th:text="'Nama Apoteker : -'"></span>
+          <span th:if="${resep.confirmerUuid} != null" th:text="'Nama Apoteker : ' + ${resep.confirmerUuid.nama}"></span>
+        </p>
         <p th:text="'Daftar Obat : '"></p>
         <br>
 
@@ -41,7 +44,6 @@
             </tr>
           </tbody>
         </table>
-        
         <tr th:if="${resep.isDone} == false">
           <form sec:authorize="hasAuthority('Apoteker')" th:action="@{/user/resep/konfirmasi}" th:object="${resep}" method="POST">
             <input type="hidden" th:field="*{id}">
@@ -54,6 +56,6 @@
     </div>
   </div>
 </div>
-
+<footer th:replace="fragments/fragment :: footer"></footer>
 </body>
 </html>

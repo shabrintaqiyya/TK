@@ -1,6 +1,6 @@
 package apap.tugas.akhir.RumahSehat.rest;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,21 +11,21 @@ import lombok.Setter;
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResepDetail {
-    // @JsonProperty("id")
-    private Long id;
+    @JsonProperty("id")
+    private String id;
 
-    // @JsonProperty("nama_dokter")
+    @JsonProperty("nama_dokter")
     private String namaDokter;
 
-    // @JsonProperty("nama_pasien")
+    @JsonProperty("nama_pasien")
     private String namaPasien;
 
-    // @JsonProperty("is_done")
-    private boolean isDone;
+    @JsonProperty("is_done")
+    private String isDone;
 
-    // @JsonProperty("nama_apoteker")
+    @JsonProperty("nama_apoteker")
     private String namaApoteker;
     
-    // @JsonProperty("list_jumlah")
-    private String listJumlah;
+    @JsonProperty("list_jumlah")
+    private List<String> listJumlah;
 }

@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 // import 'package:rumah_sehat_flutter/page/create_appointment.dart';
 import 'package:rumahsehat_flutter/screens/home.dart';
 import 'package:rumahsehat_flutter/screens/profil/profile.dart';
+import 'package:rumahsehat_flutter/screens/resep/resep_detail_screen.dart';
 // import 'package:rumah_sehat_flutter/page/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                     "Lihat Appointment",
                   ),
                 ),
-              ),
+              )
             ])),
     // 1
     const Center(

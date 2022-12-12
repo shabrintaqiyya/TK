@@ -6,15 +6,7 @@ workflow:
   rules:
     - if: $CI_COMMIT_TAG
       when: never
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - if: $CI_COMMIT_BRANCH == 'main'
-=======
     - if: $CI_COMMIT_BRANCH == 'deployment'
->>>>>>> 4275a7999f9677bdba4dc084f6389e69d6130d2b
-=======
-    - if: $CI_COMMIT_BRANCH == 'deployment'
->>>>>>> 45c551391f82c6ee3665d16b325df4f1ee0ea0b0
 
 before_script:
   - docker info
