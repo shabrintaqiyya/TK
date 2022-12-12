@@ -36,7 +36,7 @@ public class ResepModel implements Serializable {
     private Boolean isDone;
 
     @NotNull
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIME")
+    @Column(name = "created_at", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime createdAt;
 

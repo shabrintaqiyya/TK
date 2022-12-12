@@ -50,6 +50,7 @@ public class WebSecurityConfig {
                 .antMatchers("/user/add-apoteker").hasAnyAuthority("Admin") 
                 .antMatchers("/user/appointment").hasAnyAuthority("Admin", "Dokter", "Pasien") 
                 .antMatchers("/api/v1/list-dokter").hasAuthority("Pasien")
+                .antMatchers("/api/v1/resep/detail/{id}").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

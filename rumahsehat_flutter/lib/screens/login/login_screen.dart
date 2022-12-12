@@ -23,8 +23,6 @@ import '../pasien/registrasi_pasien.dart';
 class LoginScreen extends StatelessWidget {
   // const MyApp({Key? key}) : super(key: key);
 
-  String token = "";
-
   final _loginFormKey = GlobalKey<FormState>();
   String username = "";
   String password = "";
@@ -121,50 +119,6 @@ class LoginScreen extends StatelessWidget {
         )
     );
   }
-
-  Future<bool> login(String username, String password) async {
-    // final Dio dio = new Dio();
-    // var url = 'https://api.genderize.io/?name=' + username;
-    // Map data = {'username': username, 'password': password};
-    // var body = json.encode(data);
-    // var response = await http.get(Uri.parse(url));
-    // print(response.statusCode);
-    // print(response.body);
-
-    // print(umur);
-    // int umur2 = int.parse(umur);
-
-    var body = jsonEncode(<String, dynamic>{
-      "username": username,
-      "password": password
-    });
-
-    var response = await http.post(
-        Uri.parse('http://apap-125.cs.ui.ac.id/authenticate'),
-        // Uri.parse('http://localhost:8080/authenticate'),
-        headers: <String, String>{"Content-Type": "application/json; charset=UTF-8",
-          "Accept": "application/json"},
-        body:  body
-    );
-
-    token = json.decode(response.body)['jwttoken'];
-    print(response.statusCode);
-    // print(json.decode(response.body)['jwttoken']);
-
-    // String token = json.decode(response.body)['jwttoken'];
-    print(token);
-    addSharedPref(token);
-    print(response.body);
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return true;
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception
-      return false;
-    }
-  }
 }
 
 addSharedPref(jwtToken) async {
@@ -172,46 +126,45 @@ addSharedPref(jwtToken) async {
   sp.setString('jwtToken', jwtToken);
 }
 
-// Future<bool> login(String username, String password) async {
-//   // final Dio dio = new Dio();
-//   // var url = 'https://api.genderize.io/?name=' + username;
-//   // Map data = {'username': username, 'password': password};
-//   // var body = json.encode(data);
-//   // var response = await http.get(Uri.parse(url));
-//   // print(response.statusCode);
-//   // print(response.body);
-//
-//   // print(umur);
-//   // int umur2 = int.parse(umur);
-//
-//   var body = jsonEncode(<String, dynamic>{
-//     "username": username,
-//     "password": password
-//   });
-//
-//   var response = await http.post(
-//       Uri.parse('http://apap-125.cs.ui.ac.id/authenticate'),
-//       // Uri.parse('http://localhost:8080/authenticate'),
-//       headers: <String, String>{"Content-Type": "application/json; charset=UTF-8",
-//         "Accept": "application/json"},
-//       body:  body
-//   );
-//
-//   // token = json.decode(response.body)['jwttoken'];
-//   print(response.statusCode);
-//   // print(json.decode(response.body)['jwttoken']);
-//
-//   String token = json.decode(response.body)['jwttoken'];
-//   print(token);
-//   addSharedPref(token);
-//   print(response.body);
-//   if (response.statusCode == 200) {
-//     // If the server did return a 200 OK response,
-//     // then parse the JSON.
-//     return true;
-//   } else {
-//     // If the server did not return a 200 OK response,
-//     // then throw an exception
-//     return false;
-//   }
-// }
+Future<bool> login(String username, String password) async {
+  // final Dio dio = new Dio();
+  // var url = 'https://api.genderize.io/?name=' + username;
+  // Map data = {'username': username, 'password': password};
+  // var body = json.encode(data);
+  // var response = await http.get(Uri.parse(url));
+  // print(response.statusCode);
+  // print(response.body);
+
+  // print(umur);
+  // int umur2 = int.parse(umur);
+
+  var body = jsonEncode(<String, dynamic>{
+    "username": username,
+    "password": password
+  });
+
+  var response = await http.post(
+      Uri.parse('http://apap-125.cs.ui.ac.id/authenticate'),
+      // Uri.parse('http://localhost:8080/authenticate'),
+      headers: <String, String>{"Content-Type": "application/json; charset=UTF-8",
+        "Accept": "application/json"},
+      body:  body
+  );
+
+  print(response.statusCode);
+  // print(json.decode(response.body)['jwttoken']);
+
+  String token = json.decode(response.body)['jwttoken'];
+  print(token);
+  addSharedPref(token);
+  print(response.body);
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return true;
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception
+    return false;
+  }
+}

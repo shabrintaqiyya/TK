@@ -33,4 +33,9 @@ public class ApotekerServiceImpl implements ApotekerService{
         return apotekerDb.save(apoteker);
     }
 
+    @Override
+    public ApotekerModel getApotekerByUsername(String username) {
+        return apotekerDb.findByUsername(username);
+    }
+
 }

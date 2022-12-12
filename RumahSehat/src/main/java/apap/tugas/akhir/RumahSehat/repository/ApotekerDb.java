@@ -7,6 +7,6 @@ import apap.tugas.akhir.RumahSehat.model.ApotekerModel;
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
 
 @Repository
-public interface ApotekerDb extends JpaRepository<ApotekerModel, Long>{
-    PasienModel findByUsername(String username);
+public interface ApotekerDb extends JpaRepository<ApotekerModel, String>{
+    ApotekerModel findByUsername(String username);
 }

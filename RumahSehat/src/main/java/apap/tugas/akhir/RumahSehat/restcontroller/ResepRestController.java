@@ -1,5 +1,7 @@
 package apap.tugas.akhir.RumahSehat.restcontroller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,52 +12,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import apap.tugas.akhir.RumahSehat.model.JumlahModel;
 import apap.tugas.akhir.RumahSehat.model.ResepModel;
-import apap.tugas.akhir.RumahSehat.service.ResepRestService;
+import apap.tugas.akhir.RumahSehat.rest.ResepDetail;
+import apap.tugas.akhir.RumahSehat.service.ResepService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/resep")
 public class ResepRestController {
     @Autowired
-    private ResepRestService resepRestService;
+    private ResepService resepService;
 
-    @GetMapping("/resep/detail/{id}")
-    private ResepModel getData(@PathVariable("id") Long id) {
+    @GetMapping("/detail/{id}")
+    public ResepDetail retrieveResep(@PathVariable("id") Long id) {
         try {
-            return resepRestService.getResepById(id);
+            ResepModel resep = resepService.getResepById(id);
+            ResepDetail resepDetail = new ResepDetail();
+            List<String> jumlah = new ArrayList<>();
+
+            String status = "Belum selesai";
+            String apoteker = "-";
+            if (resep.getIsDone()) {
+                status = "Selesai";
+                apoteker = resep.getConfirmerUuid().getNama();
+            }
+
+            for (JumlahModel jml : resep.getListJumlah()){
+                String listJmlObat = ""+ jml.getObat().getNamaObat()+ " (" + jml.getKuantitas().toString() + " buah)";
+                jumlah.add(listJmlObat);
+            }
+
+            resepDetail.setId(String.valueOf(id));
+            resepDetail.setNamaDokter(resep.getKodeAppointment().getDokter().getNama());
+            resepDetail.setNamaPasien(resep.getKodeAppointment().getPasien().getNama());
+            resepDetail.setIsDone(status);
+            resepDetail.setNamaApoteker(apoteker);
+            resepDetail.setListJumlah(jumlah);
+            
+            log.info(String.format("User melihat detail resep dengan id ", id));
+            return resepDetail;
         } catch (NoSuchElementException e){
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Resep with id " + id + " not found"
+                HttpStatus.NOT_FOUND, "Resep with id " + id + " not found"
             );
         }
     }
 }
-
-
-
-
-// package apap.tugas.akhir.RumahSehat.rest;
-
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RestController;
-
-// import apap.tugas.akhir.RumahSehat.model.ResepModel;
-// import apap.tugas.akhir.RumahSehat.service.ResepService;
-
-// @RestController
-// @RequestMapping("/api/resep")
-// public class ResepDetail {
-//     @Autowired
-//     ResepService resepService;
-
-//     @GetMapping(value = "/detailresep/{id}")
-//     private ResepModel getData(@PathVariable Long id) {
-//         ResepModel resep = resepService.getResepById(id);
-//         return resep;
-//     }
-// }
