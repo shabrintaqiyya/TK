@@ -144,7 +144,8 @@ Future<bool> login(String username, String password) async {
   });
 
   var response = await http.post(
-      Uri.parse('http://localhost:8080/authenticate'),
+      Uri.parse('http://apap-125.cs.ui.ac.id/authenticate'),
+      // Uri.parse('http://localhost:8080/authenticate'),
       headers: <String, String>{"Content-Type": "application/json; charset=UTF-8",
         "Accept": "application/json"},
       body:  body

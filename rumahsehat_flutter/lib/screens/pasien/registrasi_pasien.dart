@@ -179,7 +179,8 @@ Future<bool> register(String nama, String email, String username, String passwor
   });
 
   var response = await http.post(
-      Uri.parse('http://localhost:8080/api/v1/pasien/add'),
+      Uri.parse('http://apap-125.cs.ui.ac.id/api/v1/pasien/add'),
+      // Uri.parse('http://localhost:8080/api/v1/pasien/add'),
       headers: <String, String>{"Content-Type": "application/json; charset=UTF-8",
         "Accept": "application/json"},
       body:  body
