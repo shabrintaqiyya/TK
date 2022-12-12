@@ -1,6 +1,7 @@
 package apap.tugas.akhir.RumahSehat.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class AppointmentRestServiceImpl implements AppointmentRestService {
     @Override
     public AppointmentModel createAppointment(DokterModel dokter, PasienModel pasien, AptDetail aptDTO) {
         AppointmentModel appointment = new AppointmentModel();
+        System.out.println("kode apt yg baru dibuat: " + appointment.getKode());
         appointment.setIsDone(false);
         appointment.setWaktuAwal(aptDTO.getWaktuAwal());
         appointment.setDokter(dokter);
@@ -70,5 +72,48 @@ public class AppointmentRestServiceImpl implements AppointmentRestService {
     @Override
     public AppointmentModel saveAppointment(AppointmentModel apt) {
         return appointmentDb.save(apt);
+    }
+
+    @Override
+    public List<AptDetail> retrieveListApt(String usernamePasien) {
+        PasienModel pasienModel = pasienDb.findByUsername(usernamePasien);
+        List<AppointmentModel> listAptInPasienModel = pasienModel.getListAppointment();
+        List<AptDetail> listAptInPasienDTO = new ArrayList<>();
+        for (AppointmentModel aptModel : listAptInPasienModel) {
+            AptDetail aptDtoTemp = new AptDetail();
+            aptDtoTemp.setKode(aptModel.getKode());
+            aptDtoTemp.setNamaDokter(aptModel.getDokter().getNama());
+            aptDtoTemp.setUsernameDokter(aptModel.getDokter().getUsername());
+            aptDtoTemp.setNamaPasien(aptModel.getPasien().getNama());
+            aptDtoTemp.setUsernamePasien(usernamePasien);
+            aptDtoTemp.setWaktuAwal(aptModel.getWaktuAwal());
+            aptDtoTemp.setIsDone(aptModel.getIsDone());
+            listAptInPasienDTO.add(aptDtoTemp);
+        }
+        return listAptInPasienDTO;
+    }
+
+    @Override
+    public AptDetail getAppointmentByKode(String kode) {
+        System.out.println("MASUKKKKK SERVICE");
+        System.out.println(kode);
+        AppointmentModel apt = appointmentDb.findByKode(kode);
+        System.out.println("kode apt model: " + apt.getKode());
+        AptDetail aptDTO = new AptDetail();
+        aptDTO.setKode(kode);
+        System.out.println("kode apt dto: " + aptDTO.getKode());
+        aptDTO.setWaktuAwal(apt.getWaktuAwal());
+        System.out.println("waktu awal: " + aptDTO.getWaktuAwal());
+        aptDTO.setNamaDokter(apt.getDokter().getNama());
+        System.out.println("dokter nama: " + aptDTO.getNamaDokter());
+        aptDTO.setUsernameDokter(apt.getDokter().getUsername());
+        System.out.println("dokter username: " + aptDTO.getUsernameDokter());
+        aptDTO.setNamaPasien(apt.getPasien().getNama());
+        System.out.println("pasien nama: " + aptDTO.getNamaPasien());
+        aptDTO.setUsernamePasien(apt.getPasien().getUsername());
+        System.out.println("pasien username: " + aptDTO.getUsernamePasien());
+        aptDTO.setIsDone(apt.getIsDone());
+        System.out.println("isdone: " + aptDTO.getIsDone());
+        return aptDTO;
     }
 }

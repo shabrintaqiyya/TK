@@ -9,6 +9,6 @@ import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 
 @Repository
 public interface AppointmentDb extends JpaRepository<AppointmentModel, String> {
-    Optional<AppointmentModel> findByKode(String kode);
+    AppointmentModel findByKode(String kode);
 
 }
