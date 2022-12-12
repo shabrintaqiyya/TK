@@ -21,9 +21,4 @@ public class RumahSehatApplication {
             }
         };
     }
-
-    // @Bean
-    // public WebSecurityConfig webSecurityConfig() {
-    //     return new WebSecurityConfig();
-    // }
 }

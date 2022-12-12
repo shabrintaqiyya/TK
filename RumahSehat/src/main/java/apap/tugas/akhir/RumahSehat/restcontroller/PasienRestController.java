@@ -1,5 +1,7 @@
 package apap.tugas.akhir.RumahSehat.restcontroller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +44,10 @@ public class PasienRestController {
 	public String displayPasien() {
 		return "Display home untuk pasien";
 	}
+
+    @GetMapping(value = "/pasien/list-pasien")
+    private List<PasienModel> listPasien() {
+        System.out.println("PRINTTTTTTTTTT "+pasienRestService.getAllPasien());
+        return pasienRestService.getAllPasien();
+    }
 }

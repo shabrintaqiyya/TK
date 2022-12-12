@@ -6,6 +6,7 @@ import apap.tugas.akhir.RumahSehat.model.PasienModel;
 import apap.tugas.akhir.RumahSehat.service.TagihanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.ArrayList;
 import java.util.List;
 
+@Controller
 public class PasienController {
 
     @Qualifier("pasienServiceImpl")

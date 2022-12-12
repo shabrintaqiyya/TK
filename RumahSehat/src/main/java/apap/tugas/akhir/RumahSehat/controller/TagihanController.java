@@ -6,12 +6,14 @@ import apap.tugas.akhir.RumahSehat.service.PasienService;
 import apap.tugas.akhir.RumahSehat.service.TagihanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@Controller
 public class TagihanController {
 
     @Qualifier("tagihanServiceImpl")
@@ -31,7 +33,7 @@ public class TagihanController {
         return "form-bayar-tagihan";
     }
 
-    @PostMapping("/pasien/{id}/{kode}/}")
+    @PostMapping("/pasien/{id}/{kode}")
     public String formBayarTagihanKonfirmasi(@ModelAttribute TagihanModel tagihan, Model model) {
         TagihanModel tempTagihan = tagihanService.getTagihanByKode(tagihan.getKode());
         PasienModel tempPasien = pasienService.getPasienByKodeTagihan(tagihan.getKode());

@@ -1,6 +1,7 @@
 
 // import 'dart:html';
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -209,7 +210,8 @@ Future<bool> register(String nama, String email, String username, String passwor
 //
 //   // This widget is the home page of your application. It is stateful, meaning
 //   // that it has a State object (defined below) that contains fields that affect
-//   // how it looks.
+//   // how it lo
+//   oks.
 //
 //   // This class is the configuration for the state. It holds the values (in this
 //   // case the title) provided by the parent (in this case the App widget) and

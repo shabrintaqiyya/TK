@@ -1,15 +1,23 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rumahsehat_flutter/screens/login/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+
 
 class ProfilePage extends StatelessWidget {
   // const ProfilePage({super.key});
-  const ProfilePage({
+  ProfilePage({
     Key? key,
   }) : super(key: key);
+
+  List<dynamic> extractedData = [];
+
+  List<dynamic> temp = [];
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +97,34 @@ class ProfilePage extends StatelessWidget {
               const LogoutButton()
             ]));
   }
+
+  Future<void> database() async {
+    // const url = 'http://joeurnnal.herokuapp.com/message/data/';
+    const url = 'http://localhost:8080/api/v1/pasien/list-pasien';
+    // try {Today
+
+    final response = await http.get(Uri.parse(url));
+    // print(response.body);
+    extractedData = jsonDecode(response.body);
+    temp = [];
+    extractedData.forEach((val) {
+      // if (val['fields']['akun'] == globals.GlobalData.user) {
+      //   temp.add(val);
+      // }
+    });
+
+    extractedData = temp;
+
+    //     extractedData.forEach((val){
+    //   if(((val['fields']['kepada'] == globals.GlobalData.user) && (val['fields']['dari'] == widget.dari )) || ((val['fields']['dari'] == globals.GlobalData.user) && (val['fields']['kepada'] == widget.dari )) )
+    //   {
+    //     data.add(val);
+    //     daftarKey.add(GlobalKey<FormState>());
+    //     print(val);
+    //   }
+    // });
+  }
+
 }
 
 class LogoutButton extends StatefulWidget {

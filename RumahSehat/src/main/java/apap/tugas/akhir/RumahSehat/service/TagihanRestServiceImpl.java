@@ -6,12 +6,17 @@ import apap.tugas.akhir.RumahSehat.repository.PasienDb;
 import apap.tugas.akhir.RumahSehat.repository.TagihanDb;
 import apap.tugas.akhir.RumahSehat.rest.Setting;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class TagihanRestServiceImpl implements TagihanRestService{
     public final WebClient webClient;
 

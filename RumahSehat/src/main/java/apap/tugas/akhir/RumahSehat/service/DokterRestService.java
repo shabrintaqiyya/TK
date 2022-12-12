@@ -8,4 +8,5 @@ import java.util.List;
 public interface DokterRestService {
     DokterModel getDokterByUsername(String username);
     List<AppointmentModel> getListAppointmentInDokter(DokterModel dokter);
+    List<DokterModel> getAllDokter();
 }

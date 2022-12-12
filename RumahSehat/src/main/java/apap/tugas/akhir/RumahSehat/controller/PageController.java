@@ -128,4 +128,9 @@ public class PageController {
         log.info("Admin berhasil logout dengan SSO");
         return new ModelAndView("redirect:" + Setting.SERVER_LOGOUT + Setting.CLIENT_LOGOUT);
     }
+
+    // @GetMapping("/chart")
+    // public String viewStatistics(Model model) {
+    //     return "chart";
+    // }
 }

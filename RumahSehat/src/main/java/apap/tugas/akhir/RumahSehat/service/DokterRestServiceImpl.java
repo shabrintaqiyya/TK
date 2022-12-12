@@ -36,4 +36,9 @@ public class DokterRestServiceImpl implements DokterRestService {
     public List<AppointmentModel> getListAppointmentInDokter(DokterModel dokter) {
         return dokter.getListAppointment();
     }
+
+    @Override
+    public List<DokterModel> getAllDokter(){
+        return dokterDb.findAll();
+    }
 }
