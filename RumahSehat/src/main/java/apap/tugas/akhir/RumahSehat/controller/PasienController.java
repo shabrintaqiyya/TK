@@ -1,5 +1,6 @@
 package apap.tugas.akhir.RumahSehat.controller;
 
+import apap.tugas.akhir.RumahSehat.model.ObatModel;
 import apap.tugas.akhir.RumahSehat.model.TagihanModel;
 import apap.tugas.akhir.RumahSehat.service.PasienService;
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
@@ -32,6 +33,13 @@ public class PasienController {
         model.addAttribute("listTagihan", listTagihan);
         model.addAttribute("pasien", pasien);
         return "view-pasien";
+    }
+
+    @GetMapping("/viewall-pasien")
+    public String listPasien(Model model){
+        List<PasienModel> listPasien = pasienService.getListPasien();
+        model.addAttribute("listPasien", listPasien);
+        return "viewall-pasien";
     }
 
     @GetMapping("/pasien/{id}/topup")
