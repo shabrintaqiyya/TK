@@ -3,6 +3,7 @@ package apap.tugas.akhir.RumahSehat.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,16 +13,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
 import apap.tugas.akhir.RumahSehat.repository.DokterDb;
+import apap.tugas.akhir.RumahSehat.rest.DokterDetail;
 import apap.tugas.akhir.RumahSehat.rest.Setting;
 
 @Service
 @Transactional
 public class DokterRestServiceImpl implements DokterRestService {
-    public final WebClient webClient;
-
-    public DokterRestServiceImpl(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(Setting.userUrl).build();
-    }
 
     @Autowired
     private DokterDb dokterDb;
@@ -33,8 +30,17 @@ public class DokterRestServiceImpl implements DokterRestService {
     }
 
     @Override
-    public List<AppointmentModel> getListAppointmentInDokter(DokterModel dokter) {
-        return dokter.getListAppointment();
+    public List<DokterDetail> retrieveListDokter() {
+        List<DokterModel> listDokterModel = dokterDb.findAll();
+        List<DokterDetail> listDokterDTO = new ArrayList<>();
+        for (DokterModel dokterModel : listDokterModel) {
+            DokterDetail dokterTemp = new DokterDetail();
+            dokterTemp.setUsername_dokter(dokterModel.getUsername());
+            dokterTemp.setNama_dokter(dokterModel.getNama());
+            dokterTemp.setTarif(dokterModel.getTarif());
+            listDokterDTO.add(dokterTemp);
+        }
+        return listDokterDTO;
     }
 
     @Override

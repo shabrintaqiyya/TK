@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DokterDetail {
-    private String username_dokter;
-    private String nama_dokter;
-    private Integer tarif;
+public class PasienDetail {
+    private String id_pasien;
+    private String nama_pasien;
+    
 }

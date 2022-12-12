@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
     ),
     // 5
     // const ProfilePage(),
-    const ProfilePage(),
+    ProfilePage(),
     // const Center(
     //   child: Text(
     //     'Profile',

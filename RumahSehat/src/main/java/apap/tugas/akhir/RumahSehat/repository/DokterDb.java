@@ -8,4 +8,5 @@ import apap.tugas.akhir.RumahSehat.model.DokterModel;
 @Repository
 public interface DokterDb extends JpaRepository<DokterModel, Long>{
     DokterModel findByUsername(String username);
+    DokterModel findById(String id);
 }

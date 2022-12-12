@@ -2,7 +2,6 @@ package apap.tugas.akhir.RumahSehat.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -50,7 +49,8 @@ public class WebSecurityConfig {
                 .antMatchers("/user/add-dokter").hasAnyAuthority("Admin") 
                 .antMatchers("/user/add-apoteker").hasAnyAuthority("Admin") 
                 .antMatchers("/user/appointment").hasAnyAuthority("Admin", "Dokter", "Pasien") 
-                .anyRequest().authenticated()
+                .antMatchers("/api/v1/list-dokter").hasAuthority("Pasien")
+                // .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 // .loginPage("/login")
@@ -125,7 +125,6 @@ public class WebSecurityConfig {
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    // .loginPage("/login")
                     .loginPage("/login").permitAll()
                     .and()
                     .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

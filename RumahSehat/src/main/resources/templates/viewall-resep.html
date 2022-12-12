@@ -31,9 +31,12 @@
                         <tr th:each="resep, iterationStatus : ${listResep}">
                             <td th:text="${resep.id}"></td>
                             <td th:text="${resep.createdAt}"></td>
-                            <td th:text="${resep.isDone}"></td>
+                            <td>
+                                <span th:if="${resep.isDone} == false" th:text="'Belum selesai'"></span>
+                                <span th:if="${resep.isDone} == true" th:text="'Selesai'"></span>
+                            </td>
                             <td style="vertical-align: middle; text-align: center; word-wrap: break-word;">
-                                <a class="mx-1 btn btn-primary" style="width: 50%;" th:href="@{/resep/view(id=${resep.id})}">Detail Resep</a>
+                                <a class="mx-1 btn btn-primary" style="width: 50%;" th:href="@{/user/resep/view(id=${resep.id})}">Detail Resep</a>
                             </td>
                         </tr>
                     </tbody>

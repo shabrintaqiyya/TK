@@ -32,6 +32,7 @@ import apap.tugas.akhir.RumahSehat.setting.Setting;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 @Controller
 public class PageController {
@@ -107,7 +108,7 @@ public class PageController {
         HttpSession httpSession = request.getSession(true);
         httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
         
-        log.info(admin.getUsername() +" erhasil login");
+        log.info(admin.getUsername() +" berhasil login");
         return new ModelAndView("redirect:/");
     }
 

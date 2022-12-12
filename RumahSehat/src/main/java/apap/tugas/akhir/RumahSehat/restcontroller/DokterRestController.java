@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
+import apap.tugas.akhir.RumahSehat.rest.DokterDetail;
 import apap.tugas.akhir.RumahSehat.service.DokterRestService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,5 +23,10 @@ public class DokterRestController {
     private List<DokterModel> listPasien() {
         // System.out.println("PRINTTTTTTTTTT "+pasienRestService.getAllPasien());
         return dokterRestService.getAllDokter();
+    }
+    
+    @GetMapping(value = "/list-dokter")
+    private List<DokterDetail> retrieveListDokter() {
+        return dokterRestService.retrieveListDokter();
     }
 }

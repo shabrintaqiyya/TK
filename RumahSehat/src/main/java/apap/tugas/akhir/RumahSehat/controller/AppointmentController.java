@@ -37,12 +37,8 @@ public class AppointmentController {
         Model model
     ) {
         UserModel user = userService.getUserByUsername(username);
-        System.out.println("11111111");
-        System.out.println(user.getUsername());
         if (user.getRole().equals("Dokter")) {
             DokterModel dokter = dokterService.getDokterByUsername(username);
-            System.out.println("dokter");
-            System.out.println("aaaaaa: "+dokter.getUsername());
             List<AppointmentModel> listAppointmentDokter = dokter.getListAppointment();
             model.addAttribute("listAppointmentDokter", listAppointmentDokter);
             return "viewall-appointment-dokter";
@@ -57,10 +53,12 @@ public class AppointmentController {
         AppointmentModel appointment = appointmentService.getAppointmentByKode(kode);
         if (!appointment.getIsDone()) {
             model.addAttribute("appointment", appointment);
+            model.addAttribute("resep", appointment.getResep());
             if (appointment.getResep() != null) {
                 if (appointment.getResep().getIsDone()) { // Klo resep udh jadi
                     return "view-appointment-resep-done";
                 }
+
                 return "view-appointment-resep-undone";
             }
             return "view-appointment";

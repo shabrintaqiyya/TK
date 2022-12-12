@@ -11,8 +11,6 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import apap.tugas.akhir.RumahSehat.repository.StringPrefixedSequenceIdGenerator;
-
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,17 +28,13 @@ import java.io.Serializable;
 public class TagihanModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "BILL")
+    @GeneratedValue(generator = "bill-generator")
     @GenericGenerator(
-        name = "BILL",
-        strategy = "apap.tugas.akhir.RumahSehat.repository.StringPrefixedSequenceIdGenerator",
-        parameters = {
-            @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-            @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "BILL-")
-        }
+        name = "bill-generator",
+        strategy = "apap.tugas.akhir.RumahSehat.generator.BillKodeGenerator",
+        parameters = @Parameter(name = "prefix", value = "BILL")
     )
     @NotNull
-    @Size(max = 20)
     @Column(name = "kode", nullable = false)
     private String kode;
 
@@ -49,7 +43,7 @@ public class TagihanModel implements Serializable {
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalDateTime tanggalTerbuat;
 
-    @Column(name = "tanggal_bayar", columnDefinition = "TIME")
+    @Column(name = "tanggal_bayar", nullable = true, columnDefinition = "TIME")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalDateTime tanggalBayar; 
 
