@@ -41,6 +41,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                             <td th:text="${pasien.email}"></td>
                             <td th:text="${pasien.umur}"></td>
                             <td th:text="${pasien.saldo}"></td>
+                            <td>
+                                <div class="col">
+                                    <a class="btn btn-primary" th:href="@{/pasien} +'/'+ ${pasien.id}">Profil</a>
+                                </div>
                             <!-- <td>
                                 <a class="btn btn-sm btn-danger" th:href="@{/user/delete/} + ${user.username}">Delete</a>
                             </td> -->

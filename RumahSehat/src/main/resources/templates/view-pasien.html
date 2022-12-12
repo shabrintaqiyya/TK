@@ -45,7 +45,7 @@
             <td>
               <div class="col">
                 <a class="btn btn-primary" th:if="${tagihan.isPaid} == 1"></a>
-                <a class="btn btn-primary" th:if="${tagihan.isPaid} == 0" th:href="@{/pasien} +'/'+ ${pasien.id} + '/'+ ${tagihan.kode} + '/bayar'">Bayar</a>
+                <a class="btn btn-primary" th:if="${tagihan.isPaid} == 0" th:href="@{/pasien} +'/'+ ${pasien.id} + '/'+ ${tagihan.kode}">Bayar</a>
               </div>
             </td>
           </tr>
