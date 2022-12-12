@@ -30,10 +30,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public AppointmentModel getAppointmentByKode(String kode) {
-        Optional<AppointmentModel> appointment = appointmentDb.findByKode(kode);
-        if (appointment.isPresent()) {
-            return appointment.get();
-        } else return null;
+        AppointmentModel appointment = appointmentDb.findByKode(kode);
+        return appointment;
     }
     @Override
     public AppointmentModel setDoneAppointment(AppointmentModel appointment) {
@@ -57,10 +55,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public AppointmentModel getAppointmentByKodeModel(AppointmentModel kode) {
         String kodenya = kode.getKode();
-        Optional<AppointmentModel> appointment = appointmentDb.findByKode(kodenya);
-        if (appointment.isPresent()) {
-            return appointment.get();
-        } else return null;
+        AppointmentModel appointment = appointmentDb.findByKode(kodenya);
+        return appointment;
     }
 
     @Override

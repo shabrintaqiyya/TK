@@ -2,7 +2,6 @@ package apap.tugas.akhir.RumahSehat.controller;
 
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
-import apap.tugas.akhir.RumahSehat.model.TagihanModel;
 import apap.tugas.akhir.RumahSehat.model.UserModel;
 import apap.tugas.akhir.RumahSehat.service.*;
 
@@ -37,6 +36,7 @@ public class AppointmentController {
         Model model
     ) {
         UserModel user = userService.getUserByUsername(username);
+        System.out.println(user.getUsername());
         if (user.getRole().equals("Dokter")) {
             DokterModel dokter = dokterService.getDokterByUsername(username);
             List<AppointmentModel> listAppointmentDokter = dokter.getListAppointment();

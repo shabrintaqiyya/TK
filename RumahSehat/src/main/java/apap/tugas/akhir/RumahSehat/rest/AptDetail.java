@@ -9,10 +9,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-// @Getter @Setter
-// @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class AptDetail {
+    @JsonProperty("kode")
+    private String kode;
+
     @JsonProperty("waktu_awal")
     private LocalDateTime waktuAwal;
 
@@ -22,6 +23,15 @@ public class AptDetail {
     @JsonProperty("username_dokter")
     private String usernameDokter;
 
+    @JsonProperty("nama_pasien")
+    private String namaPasien;
+
     @JsonProperty("username_pasien")
     private String usernamePasien;
+    
+    @JsonProperty("is_done")
+    private Boolean isDone;
+
+    @JsonProperty("resep")
+    private ResepDetail resep;
 }
