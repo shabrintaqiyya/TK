@@ -1,5 +1,7 @@
 package apap.tugas.akhir.RumahSehat.service;
 
+import java.util.List;
+
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
 import apap.tugas.akhir.RumahSehat.model.DokterModel;
 import apap.tugas.akhir.RumahSehat.model.PasienModel;
@@ -11,4 +13,6 @@ public interface AppointmentRestService {
     AppointmentModel createAppointment(DokterModel dokter, PasienModel pasien, AptDetail aptDTO);
     Boolean cekJadwal(AppointmentModel currentApt);
     AppointmentModel saveAppointment(AppointmentModel apt);
+    List<AptDetail> retrieveListApt(String usernamePasien);
+    AptDetail getAppointmentByKode(String kode);
 }
