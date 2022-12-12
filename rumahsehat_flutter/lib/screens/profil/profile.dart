@@ -8,7 +8,6 @@ import 'package:rumahsehat_flutter/screens/login/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-
 class ProfilePage extends StatelessWidget {
   // const ProfilePage({super.key});
   ProfilePage({
@@ -28,8 +27,7 @@ class ProfilePage extends StatelessWidget {
           title: Text(
             'Profile',
             style: GoogleFonts.poppins(
-                color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold
-            ),
+                color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
             // style: TextStyle(
             //     color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
           ),
@@ -55,24 +53,21 @@ class ProfilePage extends StatelessWidget {
                         textAlign: TextAlign.center,
 
                         style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.bold
-                        ),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       )),
                   Align(
                       alignment: Alignment.center,
                       child: Text(
                         'pasien1',
                         style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w400
-                        ),
+                            fontSize: 20, fontWeight: FontWeight.w400),
                       )),
                   Align(
                       alignment: Alignment.center,
                       child: Text(
                         'pasien1@gmail.com',
                         style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w400
-                        ),
+                            fontSize: 20, fontWeight: FontWeight.w400),
                         textAlign: TextAlign.center,
                       )),
                   Align(
@@ -80,8 +75,7 @@ class ProfilePage extends StatelessWidget {
                       child: Text(
                         'Saldo: Rp 0',
                         style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w400
-                        ),
+                            fontSize: 20, fontWeight: FontWeight.w400),
                         //   style: GoogleFonts.poppins(
                         //       color: Colors.white,
                         //       fontSize: 18,
@@ -124,7 +118,6 @@ class ProfilePage extends StatelessWidget {
     //   }
     // });
   }
-
 }
 
 class LogoutButton extends StatefulWidget {
@@ -143,7 +136,7 @@ class _LogoutButtonState extends State<LogoutButton> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
       child: // Logout Button
-      MaterialButton(
+          MaterialButton(
         minWidth: double.infinity,
         height: 60,
         elevation: 0,
@@ -157,20 +150,16 @@ class _LogoutButtonState extends State<LogoutButton> {
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         color: Colors.red,
-        child: Text(
-          "Logout",
-          // style: GoogleFonts.poppins(),
-          style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-          )
-          // style: TextStyle(
-          //   fontWeight: FontWeight.bold,
-          //   fontSize: 18,
-          //   color: Colors.white,
-          // ),
-        ),
+        child: Text("Logout",
+            // style: GoogleFonts.poppins(),
+            style: GoogleFonts.poppins(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)
+            // style: TextStyle(
+            //   fontWeight: FontWeight.bold,
+            //   fontSize: 18,
+            //   color: Colors.white,
+            // ),
+            ),
       ),
     );
   }

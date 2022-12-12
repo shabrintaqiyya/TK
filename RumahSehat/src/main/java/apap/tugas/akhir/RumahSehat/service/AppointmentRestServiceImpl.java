@@ -94,26 +94,18 @@ public class AppointmentRestServiceImpl implements AppointmentRestService {
     }
 
     @Override
-    public AptDetail getAppointmentByKode(String kode) {
-        System.out.println("MASUKKKKK SERVICE");
-        System.out.println(kode);
-        AppointmentModel apt = appointmentDb.findByKode(kode);
-        System.out.println("kode apt model: " + apt.getKode());
+    public AptDetail getAppointmentByKode(AppointmentModel apt) {
         AptDetail aptDTO = new AptDetail();
-        aptDTO.setKode(kode);
-        System.out.println("kode apt dto: " + aptDTO.getKode());
+        aptDTO.setKode(apt.getKode());
         aptDTO.setWaktuAwal(apt.getWaktuAwal());
-        System.out.println("waktu awal: " + aptDTO.getWaktuAwal());
         aptDTO.setNamaDokter(apt.getDokter().getNama());
-        System.out.println("dokter nama: " + aptDTO.getNamaDokter());
         aptDTO.setUsernameDokter(apt.getDokter().getUsername());
-        System.out.println("dokter username: " + aptDTO.getUsernameDokter());
         aptDTO.setNamaPasien(apt.getPasien().getNama());
-        System.out.println("pasien nama: " + aptDTO.getNamaPasien());
         aptDTO.setUsernamePasien(apt.getPasien().getUsername());
-        System.out.println("pasien username: " + aptDTO.getUsernamePasien());
         aptDTO.setIsDone(apt.getIsDone());
-        System.out.println("isdone: " + aptDTO.getIsDone());
+        if (apt.getResep() != null) {
+            aptDTO.setResepId(apt.getResep().getId());
+        }
         return aptDTO;
     }
 }
