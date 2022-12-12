@@ -35,89 +35,86 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    RoundedInputField temp1 = RoundedInputField(text: 'Username', inputType: TextInputType.name, input: username);
-    RoundedPasswordField temp2 = RoundedPasswordField(text: 'Password', input: password);
+    RoundedInputField temp1 = RoundedInputField(
+        text: 'Username', inputType: TextInputType.name, input: username);
+    RoundedPasswordField temp2 =
+        RoundedPasswordField(text: 'Password', input: password);
 
-    return Scaffold (
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title:
-      //   Text(
-      //     'Selamat Datang di Rumah Sehat',
-      //     textAlign: TextAlign.center,
-      //     style: GoogleFonts.poppins(),
-      //   ),
-      // ),
+    return Scaffold(
+        // appBar: AppBar(
+        //   centerTitle: true,
+        //   title:
+        //   Text(
+        //     'Selamat Datang di Rumah Sehat',
+        //     textAlign: TextAlign.center,
+        //     style: GoogleFonts.poppins(),
+        //   ),
+        // ),
         // value: SystemUiOverlayStyle.light,
         body: GestureDetector(
             child: Stack(
-              children: <Widget>[
-                Form(
-                  key: _loginFormKey,
-                  child: Background(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          // Text(
-                          //   'Selamat Datang di Rumah Sehat',
-                          //   textAlign: TextAlign.center,
-                          //   style: GoogleFonts.poppins(),
-                          // ),
-                          // Text('Login Form', style: GoogleFonts.poppins()),
-                          // Center(child: Text('Selamat Datang di Rumah Sehat')),
-                          TitleForm(text: 'Selamat Datang di Rumah Sehat'),
-                          SizedBox(height: 50,),
-                          temp1,
-                          SizedBox(height: 20,),
-                          temp2,
-                          Padding(padding: const EdgeInsets.only(top: 20)),
-                          RoundedButton(
-                            text: 'LOGIN',
-                            press: () async {
-                              if (_loginFormKey.currentState!.validate()) {
-                                final response = await login(temp1.input, temp2.input);
-                                if (response) {
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(const SnackBar(
-                                    content: Text("Akun telah berhasil masuk!"),
-                                  ));
-                                  // globals.GlobalData.user = temp1.input;
-                                  // Navigator.pushReplacementNamed(context, HomePage.routeName);
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context) => HomePage())
-                                  );
-                                } else {
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(const SnackBar(
-                                    content:
-                                    Text("An error occured, please try again."),
-                                  ));
-                                }
-                              }
+      children: <Widget>[
+        Form(
+          key: _loginFormKey,
+          child: Background(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+                    Widget>[
+              // Text(
+              //   'Selamat Datang di Rumah Sehat',
+              //   textAlign: TextAlign.center,
+              //   style: GoogleFonts.poppins(),
+              // ),
+              // Text('Login Form', style: GoogleFonts.poppins()),
+              // Center(child: Text('Selamat Datang di Rumah Sehat')),
+              TitleForm(text: 'Selamat Datang di Rumah Sehat'),
+              SizedBox(
+                height: 50,
+              ),
+              temp1,
+              SizedBox(
+                height: 20,
+              ),
+              temp2,
+              Padding(padding: const EdgeInsets.only(top: 20)),
+              RoundedButton(
+                text: 'LOGIN',
+                press: () async {
+                  if (_loginFormKey.currentState!.validate()) {
+                    final response = await login(temp1.input, temp2.input);
+                    if (response) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Akun telah berhasil masuk!"),
+                      ));
+                      // globals.GlobalData.user = temp1.input;
+                      // Navigator.pushReplacementNamed(context, HomePage.routeName);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("An error occured, please try again."),
+                      ));
+                    }
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Login tidak valid!"),
+                    ));
+                    // Navigator.pushReplacementNamed(context, LandingScreen.routeName);
+                  }
+                },
+              ),
 
-                              else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
-                                  content: Text("Login tidak valid!"),
-                                ));
-                                // Navigator.pushReplacementNamed(context, LandingScreen.routeName);
-                              }
-                            },
-                          ),
-
-                          RoundedButton(text: 'REGISTRASI PASIEN', press: () {
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => RegisScreen())
-                            );
-                          })
-                        ]
-                    ),
-                  ),
-                ),
-              ],
-            )
-        )
-    );
+              RoundedButton(
+                  text: 'REGISTRASI PASIEN',
+                  press: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => RegisScreen()));
+                  })
+            ]),
+          ),
+        ),
+      ],
+    )));
   }
 }
 
@@ -138,18 +135,17 @@ Future<bool> login(String username, String password) async {
   // print(umur);
   // int umur2 = int.parse(umur);
 
-  var body = jsonEncode(<String, dynamic>{
-    "username": username,
-    "password": password
-  });
+  var body =
+      jsonEncode(<String, dynamic>{"username": username, "password": password});
 
   var response = await http.post(
       Uri.parse('http://apap-125.cs.ui.ac.id/authenticate'),
       // Uri.parse('http://localhost:8080/authenticate'),
-      headers: <String, String>{"Content-Type": "application/json; charset=UTF-8",
-        "Accept": "application/json"},
-      body:  body
-  );
+      headers: <String, String>{
+        "Content-Type": "application/json; charset=UTF-8",
+        "Accept": "application/json"
+      },
+      body: body);
 
   print(response.statusCode);
   // print(json.decode(response.body)['jwttoken']);

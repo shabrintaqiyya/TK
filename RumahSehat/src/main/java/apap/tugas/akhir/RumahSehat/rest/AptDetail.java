@@ -3,6 +3,7 @@ package apap.tugas.akhir.RumahSehat.rest;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 import lombok.Getter;
@@ -32,5 +33,5 @@ public class AptDetail {
     private Boolean isDone;
 
     @JsonProperty("resep")
-    private ResepDetail resep;
+    private Long resepId;
 }

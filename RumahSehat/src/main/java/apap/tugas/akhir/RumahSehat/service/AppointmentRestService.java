@@ -14,5 +14,5 @@ public interface AppointmentRestService {
     Boolean cekJadwal(AppointmentModel currentApt);
     AppointmentModel saveAppointment(AppointmentModel apt);
     List<AptDetail> retrieveListApt(String usernamePasien);
-    AptDetail getAppointmentByKode(String kode);
+    AptDetail getAppointmentByKode(AppointmentModel apt);
 }

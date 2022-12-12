@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import apap.tugas.akhir.RumahSehat.service.AppointmentRestService;
+import apap.tugas.akhir.RumahSehat.service.AppointmentService;
 import apap.tugas.akhir.RumahSehat.service.DokterRestService;
 import apap.tugas.akhir.RumahSehat.service.UserService;
 import apap.tugas.akhir.RumahSehat.model.AppointmentModel;
@@ -34,6 +36,8 @@ public class AppointmentRestController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AppointmentService appointmentService;
     
     @PostMapping(value = "appointment/add")
     private AppointmentModel createAppointment(@Valid @RequestBody AptDetail aptDTO, BindingResult bindingResult) {
@@ -61,11 +65,11 @@ public class AppointmentRestController {
         return appointmentRestService.retrieveListApt(pasien.getUsername());
     }
 
-    @GetMapping(value = "/appointment/{kode}")
-    private AptDetail retrieveAppointment(@PathVariable("kode") String kode) {
+    @GetMapping(value = "/appointment-detail")
+    private AptDetail retrieveAppointment(@RequestParam String kode) {
         try {
-            System.out.println(kode);
-            return appointmentRestService.getAppointmentByKode(kode);
+            AppointmentModel apt = appointmentService.getAppointmentByKode(kode);
+            return appointmentRestService.getAppointmentByKode(apt);
         } catch (NoSuchElementException e){
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Code Appointment " + kode + " not found"
@@ -73,3 +77,4 @@ public class AppointmentRestController {
         }
     }
 }
+
