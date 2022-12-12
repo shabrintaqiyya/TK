@@ -14,7 +14,7 @@
             <div class="justify-content-center">
                 <h2>Add Resep</h2>
                 <br>
-                <form th:action="@{/resep/add/} + ${kodeAppointment}" th:object="${resep}" method="POST">
+                <form th:action="@{/user/resep/add/} + ${kodeAppointment}" th:object="${resep}" method="POST">
 
                     <table class="table">
                         <thead>
@@ -28,10 +28,14 @@
                         </thead>
                         <tbody>
                             <tr th:each="jml, iterationStatus1 : *{listJumlah}">
+                                <!-- <td>
+                                    <input type="hidden" th:value="${resep.id}" th:field="*{listJumlah[__${iterationStatus1.index}__].resep}" />
+                                </td> -->
+
                                 <td>
-                                    <select class="js-example-basic-single" name="noObat" th:field="*{listJumlah[__${iterationStatus1.index}__].obat.idObat}">
-                                        <div th:each="obatEx, iterationStatus3 : ${listObat}">
-                                            <option th:value="${obatEx.idObat}" th:text="${obatEx.namaObat}"></option>
+                                    <select class="js-example-basic-single" name="namaObat" th:field="*{listJumlah[__${iterationStatus1.index}__].obat}">
+                                        <div th:each="obatEx, iterationStatus2: ${listObat}">
+                                            <option th:value="${obatEx.idObat}" th:text="${obatEx.namaObat} + ' (Stok: ' + ${obatEx.stok} + ')'"></option>
                                         </div>
                                     </select>
                                 </td>
@@ -52,6 +56,6 @@
         </div>
     </div>
 </div>
- 
+<footer th:replace="fragments/fragment :: footer"></footer>
 </body>
 </html>

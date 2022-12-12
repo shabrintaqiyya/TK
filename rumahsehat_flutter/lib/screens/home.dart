@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 // import 'package:rumah_sehat_flutter/page/create_appointment.dart';
 import 'package:rumahsehat_flutter/screens/home.dart';
+import 'package:rumahsehat_flutter/screens/profil/profile.dart';
 // import 'package:rumah_sehat_flutter/page/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(fontSize: 72),
       ),
     ),
+    //2
     const Center(
       child: Text(
         'Obat',
@@ -92,12 +94,13 @@ class _HomePageState extends State<HomePage> {
     ),
     // 5
     // const ProfilePage(),
-    const Center(
-      child: Text(
-        'Profile',
-        style: TextStyle(fontSize: 72),
-      ),
-    ),
+    ProfilePage(),
+    // const Center(
+    //   child: Text(
+    //     'Profile',
+    //     style: TextStyle(fontSize: 72),
+    //   ),
+    // ),
   ];
 
   @override
@@ -129,7 +132,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.schedule),
               activeIcon: Icon(Icons.schedule),
-              label: 'Appointment'),
+              label: 'Appointment',),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_shopping_cart),
               activeIcon: Icon(Icons.add_shopping_cart),

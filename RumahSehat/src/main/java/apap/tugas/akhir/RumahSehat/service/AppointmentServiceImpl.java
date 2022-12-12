@@ -30,29 +30,42 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public AppointmentModel getAppointmentByKode(String kode) {
-        Optional<AppointmentModel> appointment = appointmentDb.findByKode(kode);
-        if (appointment.isPresent()) {
-            return appointment.get();
-        } else return null;
+        AppointmentModel appointment = appointmentDb.findByKode(kode);
+        return appointment;
     }
     @Override
     public AppointmentModel setDoneAppointment(AppointmentModel appointment) {
         appointment.setIsDone(true);
-        appointmentDb.save(appointment);        
+        setTagihan(appointment);
+        appointmentDb.save(appointment);
         return appointment;
     }
 
     @Override
     public TagihanModel setTagihan(AppointmentModel appointment) {
         TagihanModel tagihan = new TagihanModel();
-        List<TagihanModel> listTagihan = tagihanDb.findAll();
-        long jumlahTagihan = listTagihan.size();
-        tagihan.setKode("BILL-" + jumlahTagihan + 1);
         tagihan.setTanggalTerbuat(LocalDateTime.now());
         tagihan.setIsPaid(false);
         tagihan.setJumlahTagihan(appointment.getDokter().getTarif());
         tagihan.setKodeAppointment(appointment);
         tagihanDb.save(tagihan);
         return tagihan;
+    }
+
+    @Override
+    public AppointmentModel getAppointmentByKodeModel(AppointmentModel kode) {
+        String kodenya = kode.getKode();
+        AppointmentModel appointment = appointmentDb.findByKode(kodenya);
+        return appointment;
+    }
+
+    @Override
+    public void addAppointment(AppointmentModel appointment) {
+        appointmentDb.save(appointment);
+    }
+
+    @Override
+    public AppointmentModel createAppointment(AppointmentModel appointment) {
+        return appointmentDb.save(appointment);
     }
 }

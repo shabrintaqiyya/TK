@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.*;
+import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -26,14 +27,18 @@ import java.util.List;
 public class AppointmentModel implements Serializable {
 
     @Id
-    // @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Size(max = 20)
+    @GeneratedValue(generator = "apt-generator")
+    @GenericGenerator(
+        name = "apt-generator",
+        strategy = "apap.tugas.akhir.RumahSehat.generator.AptKodeGenerator",
+        parameters = @Parameter(name = "prefix", value = "APT")
+    )
     @Column(name = "kode", nullable = false)
     private String kode;
 
     @NotNull
     @Column(name = "waktu_awal", nullable = false, columnDefinition = "TIME")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime waktuAwal;
 
     @NotNull

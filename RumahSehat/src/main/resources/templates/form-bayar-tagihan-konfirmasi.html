@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Beranda</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2>Bayar Tagihan</h2>
+        <br>
+
+        Saldo saat ini:
+        <label class="form-control" type="text" th:text="${pasien.saldo}" th:value="${pasien.saldo}" name="saldo"></label>
+
+        <form th:action="@{/pasien} +'/'+ ${pasien.id} + '/'+ ${tagihan.kode}" th:object="${tagihan}" method="POST">
+
+          Kode:
+          <label class="form-control" type="text" th:text="${pasien.saldo}" th:value="${tagihan.kode}" name="kode"></label>
+
+          Tanggal Terbuat:
+          <label class="form-control" type="text" th:text="${pasien.saldo}" th:value="${pasien.saldo}" name="tanggalTerbuat"></label>
+
+          Jumlah Tagihan:
+          <label class="form-control" type="text" th:text="${pasien.saldo}" th:value="${pasien.saldo}" name="jumlahTagihan"></label>
+
+          <button style="float: right;" class="btn btn-primary" type="submit">Bayar</button>
+          <button style="float: right;" class="btn btn-primary" th:href="@{/pasien} +'/'+ ${pasien.id}">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

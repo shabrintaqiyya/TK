@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:rumah_sehat_app/pages/auth_page.dart';
 import 'package:rumahsehat_flutter/screens/home.dart';
 import 'package:rumahsehat_flutter/screens/home.dart';
+import 'package:rumahsehat_flutter/screens/login/login_screen.dart';
 //import 'providers/auth.dart';
 
 void main() {
@@ -64,7 +65,7 @@ class _MyAppState extends State<MyApp> {
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => LoginScreen(),
         );
       },
     );

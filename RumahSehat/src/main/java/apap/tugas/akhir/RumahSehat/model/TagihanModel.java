@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,19 +28,22 @@ import java.io.Serializable;
 public class TagihanModel implements Serializable {
 
     @Id
-    // @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(generator = "bill-generator")
+    @GenericGenerator(
+        name = "bill-generator",
+        strategy = "apap.tugas.akhir.RumahSehat.generator.BillKodeGenerator",
+        parameters = @Parameter(name = "prefix", value = "BILL")
+    )
     @NotNull
-    @Size(max = 20)
     @Column(name = "kode", nullable = false)
     private String kode;
 
     @NotNull
     @Column(name = "tanggal_terbuat", nullable = false, columnDefinition = "TIME")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalDateTime tanggalTerbuat; 
+    private LocalDateTime tanggalTerbuat;
 
-    @NotNull
-    @Column(name = "tanggal_bayar", columnDefinition = "TIME")
+    @Column(name = "tanggal_bayar", nullable = true, columnDefinition = "TIME")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalDateTime tanggalBayar; 
 
