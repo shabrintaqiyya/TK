@@ -20,8 +20,14 @@
         <p th:text="'ID: ' + ${pasien.id}"></p>
         <p th:text="'Nama Pasien: ' + ${pasien.username}"</p>
         <p th:text="'Email: ' + ${pasien.email}"></p>
+        <p th:text="'Umur: ' + ${pasien.umur}"></p>
+        <p th:text="'Saldo: ' + ${pasien.Saldo}"></p>
         <br>
+        <div class="col">
+          <a class="btn btn-primary" th:href="@{user/pasien} +'/'+ ${pasien.id} + '/topup' ">Top-up</a>
+        </div>
       </div>
+      <!--<div th:if="*{listTagihan.size() != 0}"></div>-->
       <div class="justify-content-center" th:if="${pasien.listAppointment != null}">
         <h2 style="display:inline-block;">List Tagihan</h2>
         <table class="table">
@@ -45,7 +51,7 @@
             <td>
               <div class="col">
                 <a class="btn btn-primary" th:if="${tagihan.isPaid} == 1"></a>
-                <a class="btn btn-primary" th:if="${tagihan.isPaid} == 0" th:href="@{/pasien} +'/'+ ${pasien.id} + '/'+ ${tagihan.kode}">Bayar</a>
+                <a class="btn btn-primary" th:if="${tagihan.isPaid} == 0" th:href="@{user/pasien} +'/'+ ${pasien.id} + '/'+ ${tagihan.kode}">Bayar</a>
               </div>
             </td>
           </tr>

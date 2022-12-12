@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+<head>
+  <title>Tambah Apoteker</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Apoteker')"></nav>
+
+<div class = "container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2>Tambah Pasien Baru</h2>
+        <br>
+        <form th:action="@{/user/add-pasien}" th:object="${pasien}" method="POST">
+          <label>Username</label>
+          <input type="text" name="username" class="form-control"/>
+          <br>
+
+          <label>Nama</label>
+          <input type="text" name="nama" class="form-control"/>
+          <br>
+
+          <label>E-mail</label>
+          <input type="text" name="email" class="form-control"/>
+          <br>
+
+          <label>Password</label>
+          <input type="text" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+          <br>
+
+          <!-- <label>Role</label> -->
+          <!-- <select name="role" class="form-control">
+              <option selected value="">--Pilih Role--</option>
+              <option th:each="role : ${listRole}"
+                      th:value="${role.id}"
+                      th:text="${role.role}">
+              </option>
+          </select> -->
+          <input type="hidden" name="role" th:value="Pasien" class="form-control" readonly/>
+          <!-- <br> -->
+
+          <label>Saldo</label>
+          <input type="number" name="saldo" class="form-control"/>
+          <br>
+
+          <label>Umur</label>
+          <input type="text" name="umur" class="form-control"/>
+          <br>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a class="btn btn-link" href="/">Home</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:replace="fragments/fragment :: footer"></footer>
+</body>
+</html>
