@@ -6,7 +6,7 @@ spring:
 
   main:
     allow-circular-references: true
-    
+
   # konfigurasi untuk koneksi db
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -28,3 +28,9 @@ spring:
     hibernate.ddl-auto: create-drop
 
     show-sql: true
+
+  security:
+    jwt:
+      secret-key: kelompok84
+      # in milliseconds (5 mins)
+      expire-length: 300000
