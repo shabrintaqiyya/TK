@@ -3,6 +3,10 @@ server:
   port: 8080
 
 spring:
+
+  main:
+    allow-circular-references: true
+    
   # konfigurasi untuk koneksi db
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
